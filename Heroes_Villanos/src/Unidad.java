@@ -6,6 +6,9 @@ public abstract class Unidad {
 	private int fuerza;
 	private int resistencia;
 	private int destreza;
+	private int a = 0;
+	private String Tipo;
+	
 
 	Unidad(String nombre, int velocidad, int fuerza, int resistencia, int destreza) {
 
@@ -16,6 +19,58 @@ public abstract class Unidad {
 		this.destreza = destreza;
 	}
 
+	public boolean esGanador(Unidad u2, String caracteristica) {
+		if (this == u2)
+			throw new RuntimeException("no se puede pelear con si mismo");
+		int aux = enfrentar2(u2, caracteristica, 0);
+		if (aux > 0)
+			return true;
+
+		return false;
+
+	}
+
+	public int gana(int a, int b) {
+		return a - b;
+	}
+
+	public int enfrentar2(Unidad u2, String Caracteristica, int a) {
+		int aux = 0;
+		while (a < 4) {
+			if (Caracteristica == "Fuerza") {
+				aux = gana(this.fuerza, u2.fuerza);
+				if (aux != 0)
+					return aux;
+
+				return enfrentar2(u2, "resistencia", a + 1);
+			}
+
+			if (Caracteristica == "resistencia") {
+				aux = gana(this.resistencia, u2.resistencia);
+				if (aux != 0)
+					return aux;
+
+				return enfrentar2(u2, "destreza", a + 1);
+			}
+
+			if (Caracteristica == "destreza") {
+				aux = gana(this.destreza, u2.destreza);
+				if (aux != 0)
+					return aux;
+
+				return enfrentar2(u2, "velocidad", a + 1);
+			}
+			if (Caracteristica == "velocidad") {
+				aux = gana(this.velocidad, u2.velocidad);
+				if (aux != 0)
+					return aux;
+
+				return enfrentar2(u2, "fuerza", a + 1);
+			}
+		}
+		return 0;
+
+	}
 
 	public Object enfrentar(Unidad a1) {
 		if (this.velocidad > a1.velocidad) {
@@ -56,6 +111,5 @@ public abstract class Unidad {
 	public String getNombre() {
 		return this.nombre;
 	}
-	
-}
 
+}
