@@ -1,0 +1,3 @@
+Competidor [heroe_o_villano=Héroe, nombreReal=EdwardBlake, nombrePersonaje=TheComedian, velocidad=100, fuerza=200, resistencia=150, destreza=50]
+Competidor [heroe_o_villano=Villano, nombreReal=AdrianVeidt, nombrePersonaje=Ozymandias, velocidad=120, fuerza=180, resistencia=200, destreza=200]
+Competidor [heroe_o_villano=Heroe, nombreReal=Yair, nombrePersonaje=Stormer, velocidad=100, fuerza=58, resistencia=52, destreza=50]
