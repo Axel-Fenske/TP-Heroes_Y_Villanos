@@ -2,6 +2,7 @@ import java.util.ArrayList;
 public abstract class Liga extends Competidor{
 	String nombreLiga;
 
+	///estoy aca
 	
 	Liga(String heroe_o_villano, String nombreReal, String nombrePersonaje, int velocidad, int fuerza, int resistencia,
 			int destreza) {
