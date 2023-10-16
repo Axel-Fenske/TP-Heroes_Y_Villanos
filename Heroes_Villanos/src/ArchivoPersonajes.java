@@ -13,9 +13,9 @@ public class ArchivoPersonajes {
 		this.nombre = nombre;
 	}
 
-	public ArrayList<Competidor> leerArchivo() {
+	public ArrayList<Unidad> leerArchivo() {
 		Scanner scanner = null;
-		ArrayList<Competidor> datos = null;
+		ArrayList<Unidad> datos = null;
 
 		try {
 			File file = new File("casos de prueba/in/" + this.nombre + ".in");
@@ -30,7 +30,7 @@ public class ArchivoPersonajes {
 			while(scanner.hasNext()) {
 				
 				String campos[] = scanner.nextLine().split(",");
-				datos.add(new Competidor(campos[0], campos[1], campos[2], 
+				datos.add(new Unidad(campos[0], campos[1], campos[2], 
 						Integer.valueOf(campos[3]), Integer.valueOf(campos[4]), Integer.valueOf(campos[5]), Integer.valueOf(campos[6])));
 				
 			}
@@ -44,7 +44,7 @@ public class ArchivoPersonajes {
 		return datos;
 	}
 
-	public void guardarArchivo(ArrayList<Competidor> datos) {
+	public void guardarArchivo(ArrayList<Unidad> datos) {
 		FileWriter file = null;
 		PrintWriter printerWriter = null;
 

@@ -9,10 +9,10 @@ public class LigaVillanos extends Liga{
 		// TODO Auto-generated constructor stub
 	}
 	public void agregarVillano(String tipo, String nombreReal, String nombre, int velocidad, int fuerza,int resistencia, int destreza){
-		Competidor villano= new Competidor(tipo,nombreReal,nombre,velocidad,fuerza,resistencia,destreza);
+		Unidad villano= new Unidad(tipo,nombreReal,nombre,velocidad,fuerza,resistencia,destreza);
 		super.liga.add(villano);
 	}
-	public void eliminarVillano(Competidor v) {
+	public void eliminarVillano(Unidad v) {
 		super.liga.remove(v);
 	}
 	

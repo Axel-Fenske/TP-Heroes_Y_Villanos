@@ -11,7 +11,7 @@ public class Main {
 				
 		
 		String menuPrincipal;
-		ArrayList<Competidor> listaCompetidores = new ArrayList<Competidor>();
+		ArrayList<Unidad> listaCompetidores = new ArrayList<Unidad>();
 		do {
 			System.out.println("----------MENU PRINCIPAL----------\n");
 			System.out.println("Seleccione una opcion");
@@ -42,7 +42,7 @@ public class Main {
 
 	}
 
-	static void administracionDePersonajes(ArrayList<Competidor> listaCompetidores) {
+	static void administracionDePersonajes(ArrayList<Unidad> listaCompetidores) {
 
 		String menuPrincipal;
 
@@ -147,7 +147,7 @@ public class Main {
 		limpiarPantalla();
 	}
 
-	static void crearPersonaje(ArrayList<Competidor> listaCompetidores) {
+	static void crearPersonaje(ArrayList<Unidad> listaCompetidores) {
 		limpiarPantalla();
 		int valor = 1;
 		String her_o_vill;
@@ -158,7 +158,7 @@ public class Main {
 		int fuerza;
 		int resistencia;
 		int destreza;
-		Competidor competidor;
+		Unidad competidor;
 
 		while (valor != 0) {
 
@@ -198,7 +198,7 @@ public class Main {
 			System.out.print("Ingrese Destreza del Personaje: ");
 			destreza = Integer.parseInt(new Scanner(System.in).nextLine());
 
-			competidor = new Competidor(heroe_o_villano, nombreReal, nombreCompetidor, velocidad, fuerza, resistencia,
+			competidor = new Unidad(heroe_o_villano, nombreReal, nombreCompetidor, velocidad, fuerza, resistencia,
 					destreza);
 			listaCompetidores.add(competidor);
 
@@ -211,7 +211,7 @@ public class Main {
 
 	}
 	
-	static void listadoPersonaje(ArrayList<Competidor> listaCompetidores)
+	static void listadoPersonaje(ArrayList<Unidad> listaCompetidores)
 	{
 		limpiarPantalla();
 		int i;

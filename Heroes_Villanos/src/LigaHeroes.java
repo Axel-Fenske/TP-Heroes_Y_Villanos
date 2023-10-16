@@ -8,10 +8,10 @@ public class LigaHeroes extends Liga{
 		// TODO Auto-generated constructor stub
 	}
 	public void agregarHeroes(String tipo, String nombreReal, String nombre, int velocidad, int fuerza,int resistencia, int destreza){
-		Competidor heroe= new Competidor(tipo,nombreReal,nombre,velocidad,fuerza,resistencia,destreza);
+		Unidad heroe= new Unidad(tipo,nombreReal,nombre,velocidad,fuerza,resistencia,destreza);
 		super.liga.add(heroe);
 	}
-	public void eliminarHeroes(Competidor v) {
+	public void eliminarHeroes(Unidad v) {
 		super.liga.remove(v);
 	}
 

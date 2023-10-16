@@ -1,29 +1,19 @@
 import java.util.ArrayList;
 public abstract class Liga extends Competidor{
+
 	String nombreLiga;
 
 	
-	Liga(String heroe_o_villano, String nombreReal, String nombrePersonaje, int velocidad, int fuerza, int resistencia,
-			int destreza) {
-		super(heroe_o_villano, nombreReal, nombrePersonaje, velocidad, fuerza, resistencia, destreza);
-		// TODO Auto-generated constructor stub
-	}
+
 	
-	Liga(String nombreLiga, String heroe_o_villano, String nombreReal, String nombrePersonaje, int velocidad, int fuerza, int resistencia,
-			int destreza) {
-		this.nombreLiga=nombreLiga;
-		super(heroe_o_villano, nombreReal, nombrePersonaje, velocidad, fuerza, resistencia, destreza);
-		// TODO Auto-generated constructor stub
-	}
 
-
-	ArrayList<Competidor> liga= new ArrayList<Competidor> ();
+	ArrayList<Unidad> liga= new ArrayList<Unidad> ();
 
 	
 	public double promedioFuerza() {
 		double prom=0;
 		
-		for (Competidor unidad : liga) {
+		for (Unidad unidad : liga) {
 			prom+=unidad.getFuerza();
 		}
 		
@@ -32,7 +22,7 @@ public abstract class Liga extends Competidor{
 	public double promedioVelocidad() {
 		double prom=0;
 		
-		for (Competidor unidad : liga) {
+		for (Unidad unidad : liga) {
 			prom+=unidad.getVelocidad();
 		}
 		
@@ -42,7 +32,7 @@ public abstract class Liga extends Competidor{
 	public double promedioResistencia() {
 		double prom=0;
 		
-		for (Competidor unidad : liga) {
+		for (Unidad unidad : liga) {
 			prom+=unidad.getResistencia();
 		}
 		
@@ -51,7 +41,7 @@ public abstract class Liga extends Competidor{
 	public double promedioDestreza() {
 		double prom=0;
 		
-		for (Competidor unidad : liga) {
+		for (Unidad unidad : liga) {
 			prom+=unidad.getDestreza();
 		}
 		
