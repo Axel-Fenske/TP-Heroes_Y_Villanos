@@ -3,6 +3,7 @@ public abstract class Liga extends Competidor{
 
 	String nombreLiga;
 
+	///estoy aca
 	
 
 	
