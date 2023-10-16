@@ -23,79 +23,82 @@ public  class Competidor {
 		this.destreza = destreza;
 	}
 
-
-	
-	public String getHeroe_o_villano() {
-		return heroe_o_villano;
-	}
-
-
-	public String getNombreReal() {
-		return nombreReal;
-	}
-
-
-	public String getNombrePersonaje() {
-		return nombrePersonaje;
-	}
-
-
-	public int getVelocidad() {
-		return velocidad;
-	}
-
-	
-	public int getFuerza() {
-		return fuerza;
-	}
-
-
-	public int getResistencia() {
-		return resistencia;
-	}
-
-	
-	public int getDestreza() {
-		return destreza;
-	}
-
 	
 
-	public Object enfrentar(Competidor a1) {
-		if (this.velocidad > a1.velocidad) {
-			return this;
-		}
-		if (this.velocidad < a1.velocidad) {
-			return a1;
-		}
-
-		// Si la velocidad es igual, comparamos por fuerza
-		if (this.fuerza > a1.fuerza) {
-			return this;
-		}
-		if (this.fuerza < a1.fuerza) {
-			return a1;
-		}
-
-		// Si la fuerza también es igual, comparamos por resistencia
-		if (this.resistencia > a1.resistencia) {
-			return this;
-		}
-		if (this.resistencia < a1.resistencia) {
-			return a1;
-		}
-
-		// Si la resistencia también es igual, comparamos por destreza
-		if (this.destreza > a1.destreza) {
-			return this;
-		}
-		if (this.destreza < a1.destreza) {
-			return a1;
-		}
-
-		// Si todas las características son iguales, es un empate
-		return null;
+	public boolean esGanador(Competidor u2, String caracteristica) {
+		if (this == u2)
+			new RuntimeException("no se puede pelear con si mismo");
+		int aux = enfrentar2(u2, caracteristica, 0);
+		if (aux > 0)
+			return true;
+ 
+		return false;
+ 
 	}
+ 
+	private int gana(int a, int b) {
+		return a - b;
+	}
+ 
+	private  int enfrentar2(Competidor u2, String Caracteristica, int a) {
+		int aux = 0;
+		if (a < 4) {
+			if (Caracteristica.toUpperCase() == "FUERZA") {
+				aux = gana(this.fuerza, u2.fuerza);
+				if (aux != 0)
+					return aux;
+				return enfrentar2(u2, "RESISTENCIA", a+1);
+			}
+ 
+			if (Caracteristica.toUpperCase() == "RESISTENCIA") {
+				aux = gana(this.resistencia, u2.resistencia);
+				if (aux != 0)
+					return aux;
+ 
+				return enfrentar2(u2, "DESTREZA", a+1);
+			}
+ 
+			if (Caracteristica.toUpperCase() == "DESTREZA") {
+				aux = gana(this.destreza, u2.destreza);
+				if (aux != 0)
+					return aux;
+ 
+				return enfrentar2(u2, "VELOCIDAD", a+1);
+			}
+			if (Caracteristica.toUpperCase() == "VELOCIDAD") {
+				aux = gana(this.velocidad, u2.velocidad);
+				if (aux != 0)
+					return aux;
+				return enfrentar2(u2, "FUERZA", a+1);
+			}
+			
+			System.out.println("Caracteristica incompatible");
+		}
+		return 0;
+ 
+	}
+
+
+
+	@Override
+	public String toString() {
+		return "Es un: "
+				+heroe_o_villano
+				+"\nSu Nombre Real es: "
+				+nombreReal
+				+"\nSu Nombre del Personaje es: "
+				+nombrePersonaje
+				+"\nSu Velocidad es: "
+				+velocidad
+				+"\nSu Fuerza es: "
+				+fuerza
+				+"\nSu Resistencia es: "
+				+resistencia
+				+"\nSu Destreza es: "
+				+destreza;
+	}
+	
+	
 
 
 	
