@@ -10,6 +10,8 @@ public class Main {
 
 				
 		
+		
+		
 		String menuPrincipal;
 		ArrayList<Competidor> listaCompetidores = new ArrayList<Competidor>();
 		do {
