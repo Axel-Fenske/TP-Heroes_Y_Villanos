@@ -1,24 +1,16 @@
 import java.util.ArrayList;
-public abstract class Liga extends Competidor{
+
+
+public class Liga {
+	
 	String nombreLiga;
-
-	///estoy aca
+	ArrayList<Competidor> liga;
 	
-	Liga(String heroe_o_villano, String nombreReal, String nombrePersonaje, int velocidad, int fuerza, int resistencia,
-			int destreza) {
-		super(heroe_o_villano, nombreReal, nombrePersonaje, velocidad, fuerza, resistencia, destreza);
-		// TODO Auto-generated constructor stub
-	}
-	
-	Liga(String nombreLiga, String heroe_o_villano, String nombreReal, String nombrePersonaje, int velocidad, int fuerza, int resistencia,
-			int destreza) {
+	Liga(String nombreLiga) {
 		this.nombreLiga=nombreLiga;
-		super(heroe_o_villano, nombreReal, nombrePersonaje, velocidad, fuerza, resistencia, destreza);
-		// TODO Auto-generated constructor stub
+		liga=new ArrayList<Competidor>();
 	}
 
-
-	ArrayList<Competidor> liga= new ArrayList<Competidor> ();
 
 	
 	public double promedioFuerza() {
@@ -30,6 +22,7 @@ public abstract class Liga extends Competidor{
 		
 		return prom/liga.size();
 	}
+	
 	public double promedioVelocidad() {
 		double prom=0;
 		
@@ -49,6 +42,7 @@ public abstract class Liga extends Competidor{
 		
 		return prom/liga.size();
 	}
+	
 	public double promedioDestreza() {
 		double prom=0;
 		
@@ -58,4 +52,6 @@ public abstract class Liga extends Competidor{
 		
 		return prom/liga.size();
 	}
+	
+	
 }

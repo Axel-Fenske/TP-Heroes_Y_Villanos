@@ -1,5 +1,5 @@
 
-public class Competidor {
+public class Competidor extends Bando{
 
 	private String tipo;
 	private String nombreReal;
