@@ -39,58 +39,7 @@ public class Competidor extends Bando{
 		return fuerza;
 	}
 
-	public boolean esGanador(Competidor u2, String caracteristica) {
-		if (this == u2)
-			throw new RuntimeException("no se puede pelear con si mismo");
-		int aux = enfrentar(u2, caracteristica, 0);
-		if (aux > 0)
-			return true;
 
-		return false;
-
-	}
-
-	public int gana(int a, int b) {
-		return a - b;
-	}
-
-	private int enfrentar(Competidor u2, String Caracteristica, int a) {
-		int aux = 0;
-		if (a < 4) {
-			if (Caracteristica.toUpperCase() == "FUERZA") {
-				aux = gana(this.fuerza, u2.fuerza);
-				if (aux != 0)
-					return aux;
-				return enfrentar(u2, "RESISTENCIA", a+1);
-			}
- 
-			if (Caracteristica.toUpperCase() == "RESISTENCIA") {
-				aux = gana(this.resistencia, u2.resistencia);
-				if (aux != 0)
-					return aux;
- 
-				return enfrentar(u2, "DESTREZA", a+1);
-			}
- 
-			if (Caracteristica.toUpperCase() == "DESTREZA") {
-				aux = gana(this.destreza, u2.destreza);
-				if (aux != 0)
-					return aux;
- 
-				return enfrentar(u2, "VELOCIDAD", a+1);
-			}
-			if (Caracteristica.toUpperCase() == "VELOCIDAD") {
-				aux = gana(this.velocidad, u2.velocidad);
-				if (aux != 0)
-					return aux;
-				return enfrentar(u2, "FUERZA", a+1);
-			}
-			
-			System.out.println("Caracteristica incompatible");
-		}
-		return 0;
- 
-	}
 
 
 	@Override
