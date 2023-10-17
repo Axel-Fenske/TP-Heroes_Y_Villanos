@@ -1,21 +1,31 @@
+import javax.management.RuntimeErrorException;
 
-public class Unidad extends Competidor{
+public class Unidad extends Bando{
 
 
-//	private String tipo;
+	private String nombreReal;
 	
-
-	public Unidad(String heroe_o_villano, String nombreReal, String nombrePersonaje, int velocidad, int fuerza,
+	private int velocidad;
+	private int fuerza;
+	private int resistencia;
+	private int destreza;
+	private void confirmarTipo(String t) {
+		String tipo=t.toLowerCase();
+		if(tipo.compareTo("villano")!=0&&tipo.compareTo("heroe")!=0)
+			throw new RuntimeException("el tipo debe ser heroe o villano");
+		this.tipo=tipo;
+	}
+	public Unidad(String tipo, String nombreReal, String nombrePersonaje, int velocidad, int fuerza,
 			int resistencia, int destreza) {
-			this.tipo = heroe_o_villano;
+			confirmarTipo(tipo);
 			this.nombreReal = nombreReal;
-			this.nombrePersonaje = nombrePersonaje;
+			this.nombre = nombrePersonaje;
 			this.velocidad = velocidad;
 			this.fuerza = fuerza;
 			this.resistencia = resistencia;
 			this.destreza = destreza;
 	}
-
+	
 	public int getVelocidad() {
 		return velocidad;
 	}
@@ -31,6 +41,7 @@ public class Unidad extends Competidor{
 	public int getFuerza() {
 		return fuerza;
 	}
+
 
 	public boolean esGanador(Unidad u2, String caracteristica) {
 		if (this == u2)
@@ -54,7 +65,7 @@ public class Unidad extends Competidor{
 				+"\nSu Nombre Real es: "
 				+nombreReal
 				+"\nSu Nombre del Personaje es: "
-				+nombrePersonaje
+				+nombre
 				+"\nSu Velocidad es: "
 				+velocidad
 				+"\nSu Fuerza es: "
@@ -64,7 +75,7 @@ public class Unidad extends Competidor{
 				+"\nSu Destreza es: "
 				+destreza;
 	}
-	
+
 
 
 }

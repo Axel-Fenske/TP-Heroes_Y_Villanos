@@ -1,15 +1,18 @@
-
 public class LigaHeroes extends Liga{
 
 
-	LigaHeroes(String heroe_o_villano, String nombreReal, String nombrePersonaje, int velocidad, int fuerza,
-			int resistencia, int destreza) {
-		super(heroe_o_villano, nombreReal, nombrePersonaje, velocidad, fuerza, resistencia, destreza);
-		// TODO Auto-generated constructor stub
+	LigaHeroes(String nombreLiga) {
+		super("heroe", nombreLiga);
 	}
-	public void agregarHeroes(String tipo, String nombreReal, String nombre, int velocidad, int fuerza,int resistencia, int destreza){
-		Unidad heroe= new Unidad(tipo,nombreReal,nombre,velocidad,fuerza,resistencia,destreza);
-		super.liga.add(heroe);
+
+
+	public boolean agregar(Bando villano) {
+		if(villano.getTipo().toUpperCase()!="HEROE") {
+			System.out.println("No se puede insertar villano en una liga de heroes");
+			return false;
+		}
+		super.liga.add(villano);
+		return true;
 	}
 	public void eliminarHeroes(Unidad v) {
 		super.liga.remove(v);
