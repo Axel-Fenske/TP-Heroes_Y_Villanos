@@ -2,13 +2,15 @@
 public abstract class Bando {
 	protected String tipo;
 	protected String nombre;
+
 	public String getTipo() {
 		return tipo;
 	}
-	public  String getNombre() {
+
+	public String getNombre() {
 		return nombre;
-		
 	}
+
 	public abstract int getVelocidad();
 
 	public abstract int getFuerza();
