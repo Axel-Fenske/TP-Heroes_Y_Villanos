@@ -17,8 +17,14 @@ public class LigaHeroes extends Liga {
 		return true;
 	}
 
-	public void eliminarHeroes(Unidad v) {
-		super.liga.remove(v);
+	public void eliminarHeroe(Unidad h) {
+		if(!Liga.extisteEnEstaLiga(this, h))
+			System.out.println("no existe");
+		if (super.eliminar(h))
+			System.out.println("eliminado: " + h.getNombre());
+		else {
+			System.out.println("no se pudo eliminar");
+		}
 	}
 
 }
