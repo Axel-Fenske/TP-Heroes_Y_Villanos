@@ -6,14 +6,20 @@ public class Main {
 
 	private static Scanner menup;
 
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Main {
+
+	private static Scanner menup;
+
 	public static void main(String[] args) {
 
-				
-		
-		
-		
 		String menuPrincipal;
 		ArrayList<Unidad> listaCompetidores = new ArrayList<Unidad>();
+		ArrayList<Liga> listaLigas = new ArrayList<Liga>();
+
 		do {
 			System.out.println("----------MENU PRINCIPAL----------\n");
 			System.out.println("Seleccione una opcion");
@@ -27,18 +33,23 @@ public class Main {
 			menuPrincipal = menup.nextLine();
 
 			switch (menuPrincipal) {
-			case ("1"):  administracionDePersonajes(listaCompetidores);
+			case ("1"):
+				administracionDePersonajes(listaCompetidores);
 				break;
-			case ("2"):  administracionDeLigas();
+			case ("2"):
+				administracionDeLigas(listaCompetidores, listaLigas);
 				break;
-			case ("3"):  realizacionDeCombates();
+			case ("3"):
+				realizacionDeCombates();
 				break;
-			case ("4"):  reportes();
+			case ("4"):
+				reportes();
 				break;
-			case("5"): System.out.println("Saliendo del juego.........");
-			break;
-				default:
-					System.out.println("\nCaracter no valido!\n");
+			case ("5"):
+				System.out.println("Saliendo del juego.........");
+				break;
+			default:
+				System.out.println("\nCaracter no valido!\n");
 			}
 		} while (!menuPrincipal.equals("5"));
 
@@ -50,11 +61,15 @@ public class Main {
 
 		limpiarPantalla();
 		do {
-			System.out.println("Seleccione una opcion\n" + "1 Carga desde archivo\r\n" + "2 Creacion\r\n"
-					+ "3 Listado\r\n" + "4 Guardar en archivo todos los personajes\r\n" + "5 Atras");
+			System.out.println("Seleccione una opcion\n" 
+					+ "1 Carga desde archivo\r\n" 
+					+ "2 Creacion\r\n"
+					+ "3 Listado\r\n" 
+					+ "4 Guardar en archivo todos los personajes\r\n" 
+					+ "5 Atras");
 
 			menup = new Scanner(System.in);
-			menuPrincipal= menup.nextLine();
+			menuPrincipal = menup.nextLine();
 			switch (menuPrincipal) {
 			case ("1"):
 				break;
@@ -64,8 +79,9 @@ public class Main {
 				break;
 			case ("4"):
 				break;
-			case("5"): System.out.println("\n Volviendo a menu principal\n");
-			break;
+			case ("5"):
+				System.out.println("\n Volviendo a menu principal\n");
+				break;
 			default:
 				System.out.println("\nCaracter no valido\n");
 			}
@@ -73,26 +89,30 @@ public class Main {
 		limpiarPantalla();
 	}
 
-	static void administracionDeLigas() {
+	static void administracionDeLigas(ArrayList<Unidad> listaCompetidores, ArrayList<Liga> listaLigas) {
 
 		String menuPrincipal;
 		limpiarPantalla();
 		do {
-			System.out.println("Seleccione una opcion\n" + "1 Carga desde archivo\r\n" + "2 Creacion\r\n"
-					+ "3 Listado\r\n" + "4 Guardar en archivo todas las ligas\n" + "5 Atras");
+			System.out.println("Seleccione una opcion\n" 
+					+ "1 Carga desde archivo\r\n" 
+					+ "2 Creacion\r\n"
+					+ "3 Listado\r\n" 
+					+ "4 Guardar en archivo todas las ligas\n" 
+					+ "5 Atras");
 
 			menup = new Scanner(System.in);
-			menuPrincipal =menup.nextLine();
+			menuPrincipal = menup.nextLine();
 			switch (menuPrincipal) {
 			case ("1"):
 				break;
-			case ("2"):
+			case ("2"):  crearLiga(listaCompetidores, listaLigas);
 				break;
-			case ("3"):
+			case ("3"):  listaLigas(listaLigas);
 				break;
 			case ("4"):
 				break;
-			case("5"):
+			case ("5"):
 				break;
 			default:
 				System.out.println("\nCaracter no valido\n");
@@ -107,8 +127,10 @@ public class Main {
 		String menuPrincipal;
 		limpiarPantalla();
 		do {
-			System.out.println("Seleccione una opcion\n" + "1 Personaje contra Liga (definiendo caracteristica)\r\n"
-					+ "2 Liga contra Liga (definiendo caracteristica)\r\n" + "3 Atras");
+			System.out.println("Seleccione una opcion\n" 
+					+ "1 Personaje contra Liga (definiendo caracteristica)\r\n"
+					+ "2 Liga contra Liga (definiendo caracteristica)\r\n" 
+					+ "3 Atras");
 
 			menup = new Scanner(System.in);
 			menuPrincipal = menup.nextLine();
@@ -133,7 +155,8 @@ public class Main {
 		do {
 			System.out.println("Seleccione una opcion\n"
 					+ "1 Todos los personajes o ligas que venzan a un personaje dado para cierta caracteristica\r\n"
-					+ "2 Listado ordenado de personajes por multiples caracteristicas\r\n" + "3 Atras");
+					+ "2 Listado ordenado de personajes por multiples caracteristicas\r\n"
+					+ "3 Atras");
 
 			menup = new Scanner(System.in);
 			menuPrincipal = menup.nextLine();
@@ -156,10 +179,10 @@ public class Main {
 		String heroe_o_villano;
 		String nombreReal;
 		String nombreCompetidor;
-		int velocidad;
-		int fuerza;
-		int resistencia;
-		int destreza;
+		double velocidad;
+		double fuerza;
+		double resistencia;
+		double destreza;
 		Unidad competidor;
 
 		while (valor != 0) {
@@ -170,12 +193,12 @@ public class Main {
 				System.out.println("Ingrese 2 si tu competidor es Villano\n");
 
 				her_o_vill = new Scanner(System.in).nextLine();
-				if(!her_o_vill.equals("1")&&!her_o_vill.equals("2")) {
+				if (!her_o_vill.equals("1") && !her_o_vill.equals("2")) {
 					System.out.println("\nCaracter invalido\n");
 				}
-			} while (!her_o_vill.equals("1")&&!her_o_vill.equals("2"));
+			} while (!her_o_vill.equals("1") && !her_o_vill.equals("2"));
 
-			if (her_o_vill == "1") {
+			if (her_o_vill.equals("1")) {
 				heroe_o_villano = "Heroe";
 			} else {
 				heroe_o_villano = "Villano";
@@ -189,16 +212,16 @@ public class Main {
 
 			System.out.print("Agregando caracteristicas al personaje.\n" + "Ingrese velocidad del Personaje: ");
 
-			velocidad = Integer.parseInt(new Scanner(System.in).nextLine());
+			velocidad = Double.parseDouble(new Scanner(System.in).nextLine());
 
 			System.out.print("Ingrese Fuerza del Personaje: ");
-			fuerza = Integer.parseInt(new Scanner(System.in).nextLine());
+			fuerza = Double.parseDouble(new Scanner(System.in).nextLine());
 
 			System.out.print("Ingrese Resistencia del Personaje: ");
-			resistencia = Integer.parseInt(new Scanner(System.in).nextLine());
+			resistencia = Double.parseDouble(new Scanner(System.in).nextLine());
 
 			System.out.print("Ingrese Destreza del Personaje: ");
-			destreza = Integer.parseInt(new Scanner(System.in).nextLine());
+			destreza = Double.parseDouble(new Scanner(System.in).nextLine());
 
 			competidor = new Unidad(heroe_o_villano, nombreReal, nombreCompetidor, velocidad, fuerza, resistencia,
 					destreza);
@@ -212,31 +235,109 @@ public class Main {
 		limpiarPantalla();
 
 	}
-	
-	static void listadoPersonaje(ArrayList<Unidad> listaCompetidores)
-	{
-		limpiarPantalla();
+
+	static void listadoPersonaje(ArrayList<Unidad> listaCompetidores) {
+
 		int i;
-		if(listaCompetidores.size()>=1) {
-		for(i=0;i<listaCompetidores.size();i++) {
-			System.out.println("------------------------------------------------------");
-			System.out.println("Competidor Nro: "+(i+1)+"\n"+listaCompetidores.get(i).toString());
-			System.out.println("------------------------------------------------------\n");
+		if (listaCompetidores.size() >= 1) {
+			for (i = 0; i < listaCompetidores.size(); i++) {
+				System.out.println("------------------------------------------------------");
+				System.out.println("Competidor Nro: " + (i + 1) + "\n" + listaCompetidores.get(i).toString());
+				System.out.println("------------------------------------------------------\n");
 			}
-		}
-		else {
+		} else {
 			System.out.println("No Hay Lista de Competidores");
 		}
-		
 
-		
 	}
+
 	static void limpiarPantalla() {
-		
+
 		int i;
-		for(i=0;i<10;i++) {
+		for (i = 0; i < 10; i++) {
 			System.out.println("\n");
 		}
+	}
+
+	static void crearLiga(ArrayList<Unidad> listaCompetidores, ArrayList<Liga> listaLigas) {
+
+		Liga liga = null;
+		String nombreLiga;
+		String tipo;
+		String input;
+		int indice;
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("\n----Creando Liga----\n");
+		System.out.println("Ingrese nombre de la liga");
+
+		nombreLiga = scanner.nextLine();
+		do {
+			System.out.println("Ingrese nombre Tipo de liga (Heroe o Villano)");
+
+			tipo = scanner.nextLine();
+			if (tipo.toUpperCase().equals("HEROE")) {
+				liga = new LigaHeroes(nombreLiga);
+			} else if (tipo.toUpperCase().equals("VILLANO")) {
+				liga = new LigaVillanos(nombreLiga);
+			} else {
+				System.out.println("Tipo incompatible");
+			}
+
+		} while (!tipo.toUpperCase().equals("HEROE") && !tipo.toUpperCase().equals("VILLANO"));
+
+		do {
+			System.out.println("Desea Agregar Competidores?");
+			System.out.println("1- SI");
+			System.out.println("2- NO");
+			input = scanner.nextLine();
+			if (input.equals("1")) {
+				System.out.println("Ingrese el personaje que desea agregar a la Liga\n");
+				System.out.println("Personajes disponible...");
+				listadoPersonaje(listaCompetidores);
+				System.out.println("Ingrese Numero de Competidor");
+				indice = Integer.parseInt(scanner.nextLine());
+				if (indice <= listaCompetidores.size() && indice >= 0) { 
+					//validamos si estamos afuera de rango del indice
+					if (liga.getTipo().toUpperCase()
+							.equals(listaCompetidores.get(indice - 1).getTipo().toUpperCase())) {
+
+						// si se quiere ingresar un competidor del mismo tipo (heroe o villano) que el
+						// tipo de la liga se
+						// agrega al competidor a la liga y sino Tipo de competidor incompatible con el
+						// tipo de la liga
+
+						liga.agregarCompetidor(listaCompetidores.get(indice - 1));
+						System.out.println("Personaje agregado exitosamente...");
+					} else {
+						System.out.println("ATENCION!!! Tipo de la liga: " + liga.getTipo().toLowerCase()
+								+ " es incompatible con el tipo de competidor");
+					}
+				}
+				else {
+					System.out.println("Personaje Invalido");
+				}
+			}
+
+		} while (!input.equals("2"));
+
+		listaLigas.add(liga);
+
+	}
+
+	static void listaLigas(ArrayList<Liga> listaLigas) {
+
+		int i;
+		if (listaLigas.size() >= 1) {
+			for (i = 0; i < listaLigas.size(); i++) {
+				System.out.println("------------------------------------------------------");
+				System.out.println("Liga Nro: " + (i + 1) + "\n"
+				+ listaLigas.get(i).toString());
+				System.out.println("------------------------------------------------------\n");
+			}
+		} else {
+			System.out.println("No Hay Lista de Ligas");
+		}
+
 	}
 
 }

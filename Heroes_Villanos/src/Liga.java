@@ -2,6 +2,15 @@ import java.util.ArrayList;
 
 public abstract class Liga extends Bando {
 
+	ArrayList<Bando> liga = new ArrayList<Bando>();
+
+	public abstract boolean agregar(Bando u);
+
+	public Liga(String tipo, String nombreLiga) {
+		this.tipo = tipo;
+		this.nombre = nombreLiga;
+	}
+
 	@Override
 	public String toString() {
 		String retorno = nombre + ", ";
@@ -27,15 +36,6 @@ public abstract class Liga extends Bando {
 			}
 		}
 		return false;
-	}
-
-	ArrayList<Bando> liga = new ArrayList<Bando>();
-
-	public abstract boolean agregar(Bando u);
-
-	public Liga(String tipo, String nombreLiga) {
-		this.tipo = tipo;
-		this.nombre = nombreLiga;
 	}
 
 	public double getVelocidad() {
@@ -161,31 +161,32 @@ public abstract class Liga extends Bando {
 	}
 
 	protected boolean eliminar(Bando v) {
-		
+
 		for (Bando bando : liga) {
-				if (bando instanceof Liga) {
-					if (extisteEnEstaLiga((Liga) bando, v))
-						if(((Liga) bando).eliminar(v)) {
-							if(((Liga) bando).liga.size()==0){
-								return this.eliminarLiga(bando);
-							}
-							else {
-								return true;
-							}
+			if (bando instanceof Liga) {
+				if (extisteEnEstaLiga((Liga) bando, v))
+					if (((Liga) bando).eliminar(v)) {
+						if (((Liga) bando).liga.size() == 0) {
+							return this.eliminarLiga(bando);
+						} else {
+							return true;
 						}
+					}
 			} else if (bando.getNombre().compareTo(v.getNombre()) == 0)
 				return liga.remove(v);
 		}
 		return false;
 	}
+
 	protected boolean eliminarLiga(Bando v) {
 		for (Bando bando : liga) {
-			if (bando.getNombre().compareTo(v.getNombre()) == 0 &&
-					bando instanceof Liga) {
+			if (bando.getNombre().compareTo(v.getNombre()) == 0 && bando instanceof Liga) {
+				System.out.println(
+						"liga '" + v.getNombre() + "' eliminada de '" + this.getNombre() + "' porque estaba vacia");
 				return this.liga.remove(bando);
 			}
-				
+
 		}
-			return false;
+		return false;
 	}
 }
