@@ -2,13 +2,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Main {
 
-	private static Scanner menup;
-
-
-import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Main {
 
@@ -61,21 +55,19 @@ public class Main {
 
 		limpiarPantalla();
 		do {
-			System.out.println("Seleccione una opcion\n" 
-					+ "1 Carga desde archivo\r\n" 
-					+ "2 Creacion\r\n"
-					+ "3 Listado\r\n" 
-					+ "4 Guardar en archivo todos los personajes\r\n" 
-					+ "5 Atras");
+			System.out.println("Seleccione una opcion\n" + "1 Carga desde archivo\r\n" + "2 Creacion\r\n"
+					+ "3 Listado\r\n" + "4 Guardar en archivo todos los personajes\r\n" + "5 Atras");
 
 			menup = new Scanner(System.in);
 			menuPrincipal = menup.nextLine();
 			switch (menuPrincipal) {
 			case ("1"):
 				break;
-			case ("2"):  crearPersonaje(listaCompetidores);
+			case ("2"):
+				crearPersonaje(listaCompetidores);
 				break;
-			case ("3"):  listadoPersonaje(listaCompetidores);
+			case ("3"):
+				listadoPersonaje(listaCompetidores);
 				break;
 			case ("4"):
 				break;
@@ -94,21 +86,19 @@ public class Main {
 		String menuPrincipal;
 		limpiarPantalla();
 		do {
-			System.out.println("Seleccione una opcion\n" 
-					+ "1 Carga desde archivo\r\n" 
-					+ "2 Creacion\r\n"
-					+ "3 Listado\r\n" 
-					+ "4 Guardar en archivo todas las ligas\n" 
-					+ "5 Atras");
+			System.out.println("Seleccione una opcion\n" + "1 Carga desde archivo\r\n" + "2 Creacion\r\n"
+					+ "3 Listado\r\n" + "4 Guardar en archivo todas las ligas\n" + "5 Atras");
 
 			menup = new Scanner(System.in);
 			menuPrincipal = menup.nextLine();
 			switch (menuPrincipal) {
 			case ("1"):
 				break;
-			case ("2"):  crearLiga(listaCompetidores, listaLigas);
+			case ("2"):
+				crearLiga(listaCompetidores, listaLigas);
 				break;
-			case ("3"):  listaLigas(listaLigas);
+			case ("3"):
+				listaLigas(listaLigas);
 				break;
 			case ("4"):
 				break;
@@ -127,10 +117,8 @@ public class Main {
 		String menuPrincipal;
 		limpiarPantalla();
 		do {
-			System.out.println("Seleccione una opcion\n" 
-					+ "1 Personaje contra Liga (definiendo caracteristica)\r\n"
-					+ "2 Liga contra Liga (definiendo caracteristica)\r\n" 
-					+ "3 Atras");
+			System.out.println("Seleccione una opcion\n" + "1 Personaje contra Liga (definiendo caracteristica)\r\n"
+					+ "2 Liga contra Liga (definiendo caracteristica)\r\n" + "3 Atras");
 
 			menup = new Scanner(System.in);
 			menuPrincipal = menup.nextLine();
@@ -155,8 +143,7 @@ public class Main {
 		do {
 			System.out.println("Seleccione una opcion\n"
 					+ "1 Todos los personajes o ligas que venzan a un personaje dado para cierta caracteristica\r\n"
-					+ "2 Listado ordenado de personajes por multiples caracteristicas\r\n"
-					+ "3 Atras");
+					+ "2 Listado ordenado de personajes por multiples caracteristicas\r\n" + "3 Atras");
 
 			menup = new Scanner(System.in);
 			menuPrincipal = menup.nextLine();
@@ -296,8 +283,8 @@ public class Main {
 				listadoPersonaje(listaCompetidores);
 				System.out.println("Ingrese Numero de Competidor");
 				indice = Integer.parseInt(scanner.nextLine());
-				if (indice <= listaCompetidores.size() && indice >= 0) { 
-					//validamos si estamos afuera de rango del indice
+				if (indice <= listaCompetidores.size() && indice >= 0) {
+					// validamos si estamos afuera de rango del indice
 					if (liga.getTipo().toUpperCase()
 							.equals(listaCompetidores.get(indice - 1).getTipo().toUpperCase())) {
 
@@ -306,14 +293,13 @@ public class Main {
 						// agrega al competidor a la liga y sino Tipo de competidor incompatible con el
 						// tipo de la liga
 
-						liga.agregarCompetidor(listaCompetidores.get(indice - 1));
+						liga.agregar(listaCompetidores.get(indice - 1));
 						System.out.println("Personaje agregado exitosamente...");
 					} else {
 						System.out.println("ATENCION!!! Tipo de la liga: " + liga.getTipo().toLowerCase()
 								+ " es incompatible con el tipo de competidor");
 					}
-				}
-				else {
+				} else {
 					System.out.println("Personaje Invalido");
 				}
 			}
@@ -330,8 +316,7 @@ public class Main {
 		if (listaLigas.size() >= 1) {
 			for (i = 0; i < listaLigas.size(); i++) {
 				System.out.println("------------------------------------------------------");
-				System.out.println("Liga Nro: " + (i + 1) + "\n"
-				+ listaLigas.get(i).toString());
+				System.out.println("Liga Nro: " + (i + 1) + "\n" + listaLigas.get(i).toString());
 				System.out.println("------------------------------------------------------\n");
 			}
 		} else {

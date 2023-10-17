@@ -1,10 +1,10 @@
 public class Unidad extends Bando {
 
 	private String nombreReal;
-	private int velocidad;
-	private int fuerza;
-	private int resistencia;
-	private int destreza;
+	private double velocidad;
+	private double fuerza;
+	private double resistencia;
+	private double destreza;
 
 	private void confirmarTipo(String t) {
 		String tipo = t.toLowerCase();
@@ -13,8 +13,8 @@ public class Unidad extends Bando {
 		this.tipo = tipo;
 	}
 
-	public Unidad(String tipo, String nombreReal, String nombrePersonaje, int velocidad, int fuerza, int resistencia,
-			int destreza) {
+	public Unidad(String tipo, String nombreReal, String nombrePersonaje, double velocidad,
+			double fuerza, double resistencia,double destreza) {
 		confirmarTipo(tipo);
 		this.nombreReal = nombreReal;
 		this.nombre = nombrePersonaje;
