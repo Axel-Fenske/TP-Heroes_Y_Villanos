@@ -24,26 +24,26 @@ public class Unidad extends Bando {
 		this.destreza = destreza;
 	}
 
-	public int getVelocidad() {
+	public double getVelocidad() {
 		return velocidad;
 	}
 
-	public int getResistencia() {
+	public double getResistencia() {
 		return resistencia;
 	}
 
-	public int getDestreza() {
+	public double getDestreza() {
 		return destreza;
 	}
 
-	public int getFuerza() {
+	public double getFuerza() {
 		return fuerza;
 	}
 
 	public boolean esGanador(Unidad u2, String caracteristica) {
 		if (this == u2)
 			throw new RuntimeException("no se puede pelear con si mismo");
-		int aux = enfrentar(u2, caracteristica, 0);
+		double aux = enfrentar(u2, caracteristica, 0);
 		if (aux > 0)
 			return true;
 		return false;

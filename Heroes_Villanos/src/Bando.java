@@ -11,18 +11,18 @@ public abstract class Bando {
 		return nombre;
 	}
 
-	public abstract int getVelocidad();
+	public abstract double getVelocidad();
 
-	public abstract int getFuerza();
+	public abstract double getFuerza();
 
-	public abstract int getResistencia();
+	public abstract double getResistencia();
 
-	public abstract int getDestreza();
+	public abstract double getDestreza();
 
 	public boolean esGanador(Bando u2, String caracteristica) {
 		if (this == u2)
 			throw new RuntimeException("no se puede pelear con si mismo");
-		int aux = enfrentar(u2, caracteristica, 0);
+		double aux = enfrentar(u2, caracteristica, 0);
 		if (aux > 0)
 			return true;
 
@@ -30,12 +30,12 @@ public abstract class Bando {
 
 	}
 
-	public int gana(int d, int e) {
+	public double gana(double d, double e) {
 		return d - e;
 	}
 
-	protected int enfrentar(Bando u2, String Caracteristica, int a) {
-		int aux = 0;
+	protected double enfrentar(Bando u2, String Caracteristica, int a) {
+		double aux = 0;
 		if (a < 4) {
 			if (Caracteristica.toUpperCase() == "FUERZA") {
 				aux = gana(this.getFuerza(), u2.getFuerza());

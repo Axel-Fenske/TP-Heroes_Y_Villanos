@@ -10,6 +10,18 @@ public class LigaVillanos extends Liga {
 			System.out.println("No se puede insertar heroe en una liga de villanos");
 			return false;
 		}
+
+		if(villano instanceof Liga) {
+			Liga l=(Liga) villano;
+//			if(l.liga.size()==0) {
+//				System.out.println("no puedo insertar una liga vacia?");
+//				return false;
+//			}
+			if(Liga.extisteEnEstaLiga(this, villano)) {
+				System.out.println("un villano ya pertenece a la liga");
+				return false;
+			}
+		}
 		super.liga.add(villano);
 		return true;
 	}
