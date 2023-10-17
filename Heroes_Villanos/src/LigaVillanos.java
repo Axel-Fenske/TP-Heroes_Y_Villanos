@@ -11,13 +11,13 @@ public class LigaVillanos extends Liga {
 			return false;
 		}
 
-		if(villano instanceof Liga) {
-			Liga l=(Liga) villano;
-//			if(l.liga.size()==0) {
-//				System.out.println("no puedo insertar una liga vacia?");
-//				return false;
-//			}
-			if(Liga.extisteEnEstaLiga(this, villano)) {
+		if (villano instanceof Liga) {
+			Liga l = (Liga) villano;
+			if (l.liga.size() == 0) {
+				System.out.println("no puedo insertar una liga vacia?");
+				return false;
+			}
+			if (Liga.extisteEnEstaLiga(this, villano)) {
 				System.out.println("un villano ya pertenece a la liga");
 				return false;
 			}
@@ -27,7 +27,13 @@ public class LigaVillanos extends Liga {
 	}
 
 	public void eliminarVillano(Unidad v) {
-		super.liga.remove(v);
+		if(!Liga.extisteEnEstaLiga(this, v))
+			System.out.println("no existe");
+		if (super.eliminar(v))
+			System.out.println("eliminado: " + v.getNombre());
+		else {
+			System.out.println("no se pudo eliminar");
+		}
 	}
 
 }
