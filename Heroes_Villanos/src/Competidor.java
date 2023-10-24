@@ -1,5 +1,5 @@
 
-public abstract class Bando {
+public abstract class Competidor {
 	protected String tipo;
 	protected String nombre;
 
@@ -19,7 +19,7 @@ public abstract class Bando {
 
 	public abstract double getDestreza();
 
-	public boolean esGanador(Bando u2, String caracteristica) {
+	public boolean esGanador(Competidor u2, String caracteristica) {
 		if (this == u2)
 			throw new RuntimeException("no se puede pelear con si mismo");
 		double aux = enfrentar(u2, caracteristica, 0);
@@ -34,7 +34,7 @@ public abstract class Bando {
 		return d - e;
 	}
 
-	protected double enfrentar(Bando u2, String Caracteristica, int a) {
+	protected double enfrentar(Competidor u2, String Caracteristica, int a) {
 		double aux = 0;
 		if (a < 4) {
 			if (Caracteristica.toUpperCase() == "FUERZA") {

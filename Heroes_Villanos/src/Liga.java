@@ -1,10 +1,10 @@
 import java.util.ArrayList;
 
-public abstract class Liga extends Bando {
+public abstract class Liga extends Competidor {
 
-	ArrayList<Bando> liga = new ArrayList<Bando>();
+	ArrayList<Competidor> liga = new ArrayList<Competidor>();
 
-	public abstract boolean agregar(Bando u);
+	public abstract boolean agregar(Competidor u);
 
 	public Liga(String tipo, String nombreLiga) {
 		this.tipo = tipo;
@@ -14,22 +14,22 @@ public abstract class Liga extends Bando {
 	@Override
 	public String toString() {
 		String retorno = nombre + ", ";
-		for (Bando u : liga) {
+		for (Competidor u : liga) {
 			retorno = retorno.concat(u.getNombre() + ", ");
 		}
 		retorno = retorno.substring(0, retorno.length() - 2);
 		return retorno;
 	}
 
-	public static boolean extisteEnEstaLiga(Liga l, Bando u) {
+	public static boolean extisteEnEstaLiga(Liga l, Competidor u) {
 		if (u instanceof Liga) {
 			Liga l2 = (Liga) u;
-			for (Bando v : l2.liga) {
+			for (Competidor v : l2.liga) {
 				if (extisteEnEstaLiga(l, v))
 					return true;
 			}
 		} else {
-			for (Bando b : l.liga) {
+			for (Competidor b : l.liga) {
 				if (u.getNombre().compareTo(b.getNombre()) == 0
 						|| ((b instanceof Liga) && extisteEnEstaLiga((Liga) b, u)))
 					return true;
@@ -41,7 +41,7 @@ public abstract class Liga extends Bando {
 	public double getVelocidad() {
 		double prom = 0;
 		int cant = 0;
-		for (Bando unidad : liga) {
+		for (Competidor unidad : liga) {
 			if (unidad instanceof Liga) {
 				prom += ((Liga) unidad).sumaVelocidades();
 				cant += ((Liga) unidad).sumaCantidades();
@@ -56,7 +56,7 @@ public abstract class Liga extends Bando {
 
 	private double sumaVelocidades() {
 		double suma = 0;
-		for (Bando unidad : liga) {
+		for (Competidor unidad : liga) {
 			if (unidad instanceof Liga) {
 				suma += ((Liga) unidad).sumaVelocidades();
 			} else {
@@ -68,7 +68,7 @@ public abstract class Liga extends Bando {
 
 	private int sumaCantidades() {
 		int suma = 0;
-		for (Bando unidad : liga) {
+		for (Competidor unidad : liga) {
 			if (unidad instanceof Liga) {
 				suma += ((Liga) unidad).sumaCantidades();
 			} else {
@@ -81,7 +81,7 @@ public abstract class Liga extends Bando {
 	public double getResistencia() {
 		double prom = 0;
 		int cant = 0;
-		for (Bando unidad : liga) {
+		for (Competidor unidad : liga) {
 			if (unidad instanceof Liga) {
 				prom += ((Liga) unidad).sumaResistencia();
 				cant += ((Liga) unidad).sumaCantidades();
@@ -96,7 +96,7 @@ public abstract class Liga extends Bando {
 
 	private double sumaResistencia() {
 		double suma = 0;
-		for (Bando unidad : liga) {
+		for (Competidor unidad : liga) {
 			if (unidad instanceof Liga) {
 				suma += ((Liga) unidad).sumaResistencia();
 			} else {
@@ -109,7 +109,7 @@ public abstract class Liga extends Bando {
 	public double getDestreza() {
 		double prom = 0;
 		int cant = 0;
-		for (Bando unidad : liga) {
+		for (Competidor unidad : liga) {
 			if (unidad instanceof Liga) {
 				prom += ((Liga) unidad).sumaDestreza();
 				cant += ((Liga) unidad).sumaCantidades();
@@ -123,7 +123,7 @@ public abstract class Liga extends Bando {
 
 	private double sumaDestreza() {
 		double suma = 0;
-		for (Bando unidad : liga) {
+		for (Competidor unidad : liga) {
 			if (unidad instanceof Liga) {
 				suma += ((Liga) unidad).sumaDestreza();
 			} else {
@@ -136,7 +136,7 @@ public abstract class Liga extends Bando {
 	public double getFuerza() {
 		double prom = 0;
 		int cant = 0;
-		for (Bando unidad : liga) {
+		for (Competidor unidad : liga) {
 			if (unidad instanceof Liga) {
 				prom += ((Liga) unidad).sumaFuerza();
 				cant += ((Liga) unidad).sumaCantidades();
@@ -150,7 +150,7 @@ public abstract class Liga extends Bando {
 
 	private double sumaFuerza() {
 		double suma = 0;
-		for (Bando unidad : liga) {
+		for (Competidor unidad : liga) {
 			if (unidad instanceof Liga) {
 				suma += ((Liga) unidad).sumaFuerza();
 			} else {
@@ -160,9 +160,9 @@ public abstract class Liga extends Bando {
 		return suma;
 	}
 
-	protected boolean eliminar(Bando v) {
+	protected boolean eliminar(Competidor v) {
 
-		for (Bando bando : liga) {
+		for (Competidor bando : liga) {
 			if (bando instanceof Liga) {
 				if (extisteEnEstaLiga((Liga) bando, v))
 					if (((Liga) bando).eliminar(v)) {
@@ -178,8 +178,8 @@ public abstract class Liga extends Bando {
 		return false;
 	}
 
-	protected boolean eliminarLiga(Bando v) {
-		for (Bando bando : liga) {
+	protected boolean eliminarLiga(Competidor v) {
+		for (Competidor bando : liga) {
 			if (bando.getNombre().compareTo(v.getNombre()) == 0 && bando instanceof Liga) {
 				System.out.println(
 						"liga '" + v.getNombre() + "' eliminada de '" + this.getNombre() + "' porque estaba vacia");

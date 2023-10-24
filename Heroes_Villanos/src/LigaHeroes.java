@@ -4,7 +4,7 @@ public class LigaHeroes extends Liga {
 		super("heroe", nombreLiga);
 	}
 
-	public boolean agregar(Bando heroe) {
+	public boolean agregar(Competidor heroe) {
 		if (heroe.getTipo().toUpperCase() != "HEROE") {
 			System.out.println("No se puede insertar villano en una liga de heroes");
 			return false;

@@ -1,4 +1,4 @@
-public class Unidad extends Bando {
+public class Unidad extends Competidor {
 
 	private String nombreReal;
 	private double velocidad;
