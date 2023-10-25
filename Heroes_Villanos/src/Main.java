@@ -1,5 +1,6 @@
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Scanner;
 
 public class Main {
@@ -130,7 +131,7 @@ public class Main {
 			switch (menuPrincipal) {
 			case ("1"): personajeContraPersonaje(listaCompetidores);
 				break;
-			case ("2"): personajeContraLiga(listaCompetidores, listaLigas);
+			case ("2"): //personajeContraLiga(listaCompetidores, listaLigas);
 				break;
 			case ("3"): ligaContraLiga(listaLigas);
 				break;
@@ -201,20 +202,30 @@ public class Main {
 			
 			if(l1.getTipo() != l2.getTipo())		//VERIFICO SI NO SON DEL MISMO BANDO
 			{
-				String caracteristica;
-				System.out.println("Escoga caracteristica para comenzar a luchar:\n1. Velocidad\r\n"
+				int caracteristica;
+				
+				
+				
+				System.out.println("Escoja caracteristica para comenzar a luchar:\n"
+						+ "1. Velocidad\r\n"
 						+ "2. Fuerza\r\n"
 						+ "3. Resistencia\r\n"
 						+ "4. Destreza");
-				caracteristica = new Scanner(System.in).nextLine();
+				caracteristica = new Scanner(System.in).nextInt();
 				
-				while(!caracteristica.equals("1") ||!caracteristica.equals("2") ||!caracteristica.equals("3")||!caracteristica.equals("4") )
+				while(caracteristica>4 || caracteristica<1 )
 				{
 					System.out.println("Opcion no valida. Vuelva a intentar");
-					caracteristica = new Scanner(System.in).nextLine();
+					caracteristica = new Scanner(System.in).nextInt();
 				}
 				//EMPIEZA LA LUCHA
-				if(l1.esGanador(l2, caracteristica))
+				Caracteristica c2=null;
+				for (Caracteristica c1 : Caracteristica.values()) {
+					if(c1.ordinal()==caracteristica )
+						c2=c1;
+				}
+				
+				if(l1.esGanador(l2, c2))
 					System.out.println("\nTu liga" + l1.getNombre() + "ha triunfado");
 				else
 					System.out.println(l1.getNombre() + "ha sido derrotado.");
@@ -255,23 +266,31 @@ public class Main {
 			
 			if(personaje.getTipo() != personaje2.getTipo())		//VERIFICO SI NO SON DEL MISMO BANDO
 			{
-				String caracteristica;
+				int caracteristica;
 				System.out.println("Escoga caracteristica para comenzar a luchar:\n1. Velocidad\r\n"
 						+ "2. Fuerza\r\n"
 						+ "3. Resistencia\r\n"
 						+ "4. Destreza");
-				caracteristica = new Scanner(System.in).nextLine();
+
 				
-				while(!caracteristica.equals("1") ||!caracteristica.equals("2") ||!caracteristica.equals("3")||!caracteristica.equals("4") )
+				caracteristica = new Scanner(System.in).nextInt();
+				
+				while(caracteristica>4 || caracteristica<1 )
 				{
 					System.out.println("Opcion no valida. Vuelva a intentar");
-					caracteristica = new Scanner(System.in).nextLine();
+					caracteristica = new Scanner(System.in).nextInt();
 				}
 				//EMPIEZA LA LUCHA
-				if(personaje.esGanador(personaje2, caracteristica))
+				Caracteristica c2=null;
+				for (Caracteristica c1 : Caracteristica.values()) {
+					if(c1.ordinal()==caracteristica )
+						c2=c1;
+				}
+				//EMPIEZA LA LUCHA
+				if(personaje.esGanador(personaje2, c2))
 					System.out.println("\nTu " + personaje.getTipo() + " "+personaje.getNombre() + "ha triunfado");
 				else
-					System.out.println(personaje.getNombre() + "ha sido derrotado.");
+					System.out.println(personaje.getNombre() + " ha sido derrotado.");
 			}
 			else
 				System.out.println("Dos personajes no pueden luchar entre si si son del mismo bando.");
@@ -284,6 +303,7 @@ public class Main {
 		salir = menup.nextLine();
 		}while(!salir.equals("0"));
 	}
+	
 	private static void personajeContraLiga(ArrayList<Unidad> listaCompetidores, ArrayList<Liga> listaLigas) {
 		
 		
@@ -310,20 +330,26 @@ public class Main {
 			
 			if(personaje.getTipo() != equipo.getTipo())		//VERIFICO SI NO SON DEL MISMO BANDO
 			{
-				String caracteristica;
+				int caracteristica;
 				System.out.println("Escoga caracteristica para comenzar a luchar:\n1. Velocidad\r\n"
 						+ "2. Fuerza\r\n"
 						+ "3. Resistencia\r\n"
 						+ "4. Destreza");
-				caracteristica = new Scanner(System.in).nextLine();
+				caracteristica = new Scanner(System.in).nextInt();
 				
-				while(!caracteristica.equals("1") ||!caracteristica.equals("2") ||!caracteristica.equals("3")||!caracteristica.equals("4") )
+				while(caracteristica>4 || caracteristica<1 )
 				{
 					System.out.println("Opcion no valida. Vuelva a intentar");
-					caracteristica = new Scanner(System.in).nextLine();
+					caracteristica = new Scanner(System.in).nextInt();
 				}
 				//EMPIEZA LA LUCHA
-				if(personaje.esGanador(equipo, caracteristica))
+				Caracteristica c2=null;
+				for (Caracteristica c1 : Caracteristica.values()) {
+					if(c1.ordinal()==caracteristica )
+						c2=c1;
+				}
+				//EMPIEZA LA LUCHA
+				if(personaje.esGanador(equipo, c2))
 					System.out.println("\nTu " + personaje.getTipo() + " "+personaje.getNombre() + "ha triunfado");
 				else
 					System.out.println(personaje.getNombre() + "ha sido derrotado.");
@@ -342,6 +368,7 @@ public class Main {
 		
 	}
 
+	
 	static void reportes() {
 
 		String menuPrincipal;

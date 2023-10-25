@@ -40,10 +40,10 @@ public class Unidad extends Competidor {
 		return fuerza;
 	}
 
-	public boolean esGanador(Unidad u2, String caracteristica) {
+	public boolean esGanador(Unidad u2, Caracteristica caracteristica) {
 		if (this == u2)
 			throw new RuntimeException("no se puede pelear con si mismo");
-		double aux = enfrentar(u2, caracteristica, 0);
+		double aux = enfrentar(u2, caracteristica);
 		if (aux > 0)
 			return true;
 		return false;

@@ -1,6 +1,6 @@
 public class LigaVillanos extends Liga {
 
-	LigaVillanos(String nombreLiga) {
+	public LigaVillanos(String nombreLiga) {
 
 		super("villano", nombreLiga);
 	}
