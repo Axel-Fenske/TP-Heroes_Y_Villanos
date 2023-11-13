@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
+import javax.management.RuntimeErrorException;
+
 public class Main {
 
 	private static Scanner menup;
@@ -17,7 +19,9 @@ public class Main {
 		ArrayList<Liga> listaLigas = new ArrayList<Liga>();
 		menup = new Scanner(System.in);
 
+
 		do {
+			
 			System.out.println("----------MENU PRINCIPAL----------\n");
 			System.out.println("Seleccione una opcion");
 			System.out.println("1- Administracion de Personajes");
@@ -345,7 +349,7 @@ public class Main {
 			switch (menuPrincipal) {
 			case ("1"):  todosLosQueVencenAPersonajeEnCaracteristica(listaCompetidores,listaLigas);
 				break;
-			case ("2"):  listadoPersonaje(listadoOrdenadoPersonajes(listaCompetidores));
+			case ("2"):  listadoOrdenadoPersonajes(listaCompetidores);
 				break;
 			case ("3"):
 				break;
@@ -357,38 +361,49 @@ public class Main {
 	private static void todosLosQueVencenAPersonajeEnCaracteristica(ArrayList<Unidad> listaCompetidores,
 			ArrayList<Liga> listaLigas) {
 		
+		String s="";
+		
 		System.out.println("Ingresar nombre de personaje a vencer:");
 		String nombre = menup.nextLine();
 		Caracteristica c = caracteristicaPorTeclado();
 		
 		Competidor personajeAVencer = listaCompetidores.get(buscarPersonaje(listaCompetidores, nombre));
-		System.out.println(personajeAVencer + "\nes vencido por:");
-		System.out.println("PERSONAJES");
+		s=s.concat(personajeAVencer + "\nes vencido por:\n") ;
+		s=s.concat("PERSONAJES\n");
 		boolean vencidoXPersonaje = false;
 		for (Unidad unidad : listaCompetidores) {
 			if(personajeAVencer != unidad && !personajeAVencer.getTipo().equals(unidad.getTipo()) && unidad.esGanador(personajeAVencer, c)) {
-				System.out.println(unidad);
+				s=s.concat(unidad.toString() + "\n");
 				vencidoXPersonaje = true;
 			}
 		}
-		if(!vencidoXPersonaje) System.out.println("NINGUNO");
+		if(!vencidoXPersonaje) 
+			s=s.concat("NINGUNO \n");
 		
 		boolean vencidoXLiga = false;
-		System.out.println("\nLIGAS");
+		s=s.concat("\nLIGAS\n");
 		for (Liga liga : listaLigas) {
 			if(!personajeAVencer.getTipo().equals(liga.getTipo()) && liga.esGanador(personajeAVencer, c)) {
-				System.out.println(liga);
+				s=s.concat(liga.toString() + "\n");
 				vencidoXLiga = true;
 			}
 		}
-		if(!vencidoXLiga) System.out.println("NINGUNA");
-		System.out.println();
+		if(!vencidoXLiga) 
+			s=s.concat("NINGUNA\n");
+		System.out.println(s);
 		
+		Reportes.guardarArchivo("VencenA", s);
 	}
 
-	private static List<Unidad> listadoOrdenadoPersonajes(ArrayList<Unidad> listaCompetidores) {
+	private static void listadoOrdenadoPersonajes(ArrayList<Unidad> listaCompetidores) {
+		String s="";
 		Caracteristica c = caracteristicaPorTeclado();
-		return listaCompetidores.stream().sorted(new CompetidorComparador(c)).collect(Collectors.toList());
+		s=s.concat("lista ordenada por " + c.name() + "\n");
+		for (Unidad unidad : listaCompetidores.stream().sorted(new CompetidorComparador(c)).collect(Collectors.toList())) {
+			s=s.concat(unidad + "\n");
+			
+		}
+		Reportes.guardarArchivo("ListaOrdenada por " + c.name() + " ", s);
 	}
 
 	private static Caracteristica caracteristicaPorTeclado() {
