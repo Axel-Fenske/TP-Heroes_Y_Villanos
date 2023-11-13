@@ -2,7 +2,7 @@ package heroes_villanos;
 
 
 public class Unidad extends Competidor {
-
+	private boolean perteneceAUnaLiga=false;
 	private String nombreReal;
 	private double velocidad;
 	private double fuerza;
@@ -43,15 +43,13 @@ public class Unidad extends Competidor {
 		return fuerza;
 	}
 
-//	public boolean esGanador(Unidad u2, Caracteristica caracteristica) {
-//		if (this == u2)
-//			throw new RuntimeException("no se puede pelear con si mismo");
-//		double aux = enfrentar(u2, caracteristica);
-//		if (aux > 0)
-//			return true;
-//		return false;
-//	}
-	
+	public boolean isPerteneceAUnaLiga() {
+		return perteneceAUnaLiga;
+	}
+
+	public void setPerteneceAUnaLiga() {
+		this.perteneceAUnaLiga = true;
+	}
 	@Override
 	public String toString() {
 		return tipo + ", " + nombreReal + ", " + nombre

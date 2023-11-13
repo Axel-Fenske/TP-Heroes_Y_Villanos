@@ -12,7 +12,7 @@ public class CompetidorComparador implements Comparator<Competidor>{
 	
 	@Override
 	public int compare(Competidor o1, Competidor o2) {
-		return (int)o1.compareTo(o2, car);
+		return (int)o2.compareTo(o1, car);
 	}
 
 }
