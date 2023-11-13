@@ -100,8 +100,7 @@ public class Main {
 		} catch (Exception e) {
 			System.out.println(e);
 		}
-		System.out.println("archivo cargado correctamente, presione cualquier tecla para continuar");
-		menup.nextLine();
+		finalmetodo("archivo cargado correctamente\n");
 
 	}
 
@@ -189,6 +188,7 @@ public class Main {
 		} else {
 			System.out.println("No Hay Lista de Competidores");
 		}
+		finalmetodo("listado de personajes\n");
 
 	}
 
@@ -200,6 +200,7 @@ public class Main {
 		} catch (Exception e) {
 			System.out.println(e);
 		}
+		finalmetodo("personajes guardados\n");
 
 	}
 
@@ -246,6 +247,7 @@ public class Main {
 				.filter(c -> buscarLiga(listaLigas, c.getNombre()) == -1).collect(Collectors.toList()));
 		listaLigas.addAll(archivoVillanos.leerArchivo(listaCompetidores).stream()
 				.filter(c -> buscarLiga(listaLigas, c.getNombre()) == -1).collect(Collectors.toList()));
+	finalmetodo("ligas cargadas correctamente\n");
 	}
 
 	static void crearLiga(ArrayList<Unidad> listaCompetidores, ArrayList<Liga> listaLigas) {
@@ -385,7 +387,7 @@ public class Main {
 		} else {
 			System.out.println("No Hay Lista de Ligas");
 		}
-
+		finalmetodo("listado de ligas\n");
 	}
 
 	private static void guardarListaLigas(ArrayList<Liga> listaLigas) {
@@ -395,6 +397,7 @@ public class Main {
 		ArchivoLigas archivoVillanos = new ArchivoLigas("ligasVillanos");
 		archivoVillanos.guardarArchivo(
 				listaLigas.stream().filter(c -> c.esLigaDeHeroes() == false).collect(Collectors.toList()));
+		finalmetodo("lista guardada\n");
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////
@@ -465,6 +468,7 @@ public class Main {
 			System.out.println("Presione 0 para salir al menu. Presione cualquier tecla si desea volver a comenzar.");
 			salir = menup.nextLine();
 		} while (!salir.equals("0"));
+		finalmetodo("");
 	}
 
 	private static void personajeContraLiga(ArrayList<Unidad> listaCompetidores, ArrayList<Liga> listaLigas) {
@@ -504,7 +508,7 @@ public class Main {
 			System.out.println("Presione 0 para salir al menu. Presione cualquier tecla si desea volver a comenzar.");
 			salir = menup.nextLine();
 		} while (!salir.equals("0"));
-
+		finalmetodo("");
 	}
 
 	private static void ligaContraLiga(ArrayList<Liga> listaLigas) {
@@ -542,6 +546,7 @@ public class Main {
 			System.out.println("Presione 0 para salir al menu. Presione cualquier tecla si desea volver a comenzar.");
 			salir = menup.nextLine();
 		} while (!salir.equals("0"));
+		finalmetodo("");
 	}
 
 	/////////////////////////////////////////////////////////////////////////////////////////////
@@ -618,9 +623,7 @@ public class Main {
 
 			Reportes.guardarArchivo("VencenA", s);
 
-			System.out.println("reporte guardado, presione cualquier tecla para continuar");
-			menup.nextLine();
-			limpiarPantalla();
+			finalmetodo("reporte guardado\n");
 		}
 	}
 
@@ -635,9 +638,7 @@ public class Main {
 		}
 		Reportes.guardarArchivo("ListaOrdenada por " + c.name() + " ", s);
 
-		System.out.println("reporte guardado, presione cualquier tecla para continuar");
-		menup.nextLine();
-		limpiarPantalla();
+		finalmetodo("reporte guardado\n");
 	}
 
 	// FUNCIONES NO UTILIZADAS DIRECTAMENTE POR EL USUARIO
@@ -687,11 +688,13 @@ public class Main {
 		}
 		return c2;
 	}
+
 	private static void finalmetodo(String mensaje) {
 		System.out.println(mensaje + "presione cualquier tecla para continuar");
 		menup.nextLine();
 		limpiarPantalla();
 	}
+
 	static void limpiarPantalla() {
 
 		int i;
