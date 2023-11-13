@@ -1,4 +1,6 @@
 package heroes_villanos;
+
+
 public abstract class Competidor {
 	protected String tipo;
 	protected String nombre;
@@ -28,7 +30,6 @@ public abstract class Competidor {
 			throw new RuntimeException("no se puede pelear contra su mismo tipo, deben ser enemigos");
 		}
 		double aux = this.compareTo(u2, c);
-		System.out.println(aux);
 		if (aux > 0)
 			return true;
 

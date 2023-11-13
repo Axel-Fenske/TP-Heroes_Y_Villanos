@@ -1,4 +1,5 @@
 package heroes_villanos;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -52,7 +53,8 @@ public class ArchivoPersonajes {
 		try {
 			file = new FileWriter("casos de prueba/out/" + this.nombre + ".out");
 			printerWriter = new PrintWriter(file);
-
+			
+			printerWriter.print("Héroe/Villano, NombreReal, NombrePersonaje, Velocidad, Fuerza, Resistencia, Destreza\n");
 			for (int i = 0; i < datos.size(); i++) {
 				// Imprime los datos y hace un salto de linea
 				printerWriter.println(datos.get(i));

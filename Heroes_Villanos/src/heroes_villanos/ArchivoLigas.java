@@ -1,13 +1,11 @@
 package heroes_villanos;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
@@ -48,6 +46,8 @@ public class ArchivoLigas {
 				
 				for (int i = 1; i < campos.length; i++) {
 					Competidor competidor = mapaCompetidores.get(campos[i]);
+					if(competidor == null)
+						throw new RuntimeException("no hay suficiente informacion de personajes disponible para cargar ligas");
 					nueva.agregar(competidor);
 				}
 				mapaCompetidores.put(nombre, nueva);
@@ -62,7 +62,7 @@ public class ArchivoLigas {
 		return ligasCargadas;
 	}
 
-	public void guardarArchivo(ArrayList<Unidad> datos) {
+	public void guardarArchivo(List<Liga> listaLigas) {
 		FileWriter file = null;
 		PrintWriter printerWriter = null;
 
@@ -70,9 +70,9 @@ public class ArchivoLigas {
 			file = new FileWriter("casos de prueba/out/" + this.nombre + ".out");
 			printerWriter = new PrintWriter(file);
 
-			for (int i = 0; i < datos.size(); i++) {
+			for (int i = 0; i < listaLigas.size(); i++) {
 				// Imprime los datos y hace un salto de linea
-				printerWriter.println(datos.get(i));
+				printerWriter.println(listaLigas.get(i));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

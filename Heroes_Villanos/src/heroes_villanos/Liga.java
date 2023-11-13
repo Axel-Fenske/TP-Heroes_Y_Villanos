@@ -1,4 +1,5 @@
 package heroes_villanos;
+
 import java.util.ArrayList;
 
 public abstract class Liga extends Competidor {
@@ -14,14 +15,18 @@ public abstract class Liga extends Competidor {
 
 	@Override
 	public String toString() {
-		String retorno = nombre + ", ";
-		for (Competidor u : liga) {
-			retorno = retorno.concat(u.getNombre() + ", ");
-		}
-		retorno = retorno.substring(0, retorno.length() - 2);
+		String retorno = "[" + nombre + ", ";
+		for (int i = 0; i < liga.size(); i++) {
+			retorno = retorno.concat(liga.get(i).getNombre());
+			retorno = retorno.concat((i!=liga.size()-1)? ", " : "]");
+		}		
 		return retorno;
 	}
 
+	public boolean esLigaDeHeroes() {
+		return this.getClass().getSimpleName().equals("LigaHeroes");
+	}
+	
 	public static boolean extisteEnEstaLiga(Liga l, Competidor u) {
 		if (u instanceof Liga) {
 			Liga l2 = (Liga) u;

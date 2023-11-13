@@ -1,5 +1,6 @@
 package heroes_villanos;
 
+
 public class Unidad extends Competidor {
 
 	private String nombreReal;
@@ -53,9 +54,9 @@ public class Unidad extends Competidor {
 	
 	@Override
 	public String toString() {
-		return "Es un: " + tipo + "\nSu Nombre Real es: " + nombreReal + "\nSu Nombre del Personaje es: " + nombre
-				+ "\nSu Velocidad es: " + velocidad + "\nSu Fuerza es: " + fuerza + "\nSu Resistencia es: "
-				+ resistencia + "\nSu Destreza es: " + destreza;
+		return tipo + ", " + nombreReal + ", " + nombre
+				+ ", " + velocidad + ", " + fuerza + ", "
+				+ resistencia + ", " + destreza;
 	}
 
 }
