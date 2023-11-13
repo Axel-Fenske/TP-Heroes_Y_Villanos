@@ -2,7 +2,7 @@ Héroe/Villano, NombreReal, NombrePersonaje, Velocidad, Fuerza, Resistencia, Des
 villano, Anakin Skywalker, Darth Vader, 20.0, 300.0, 500.0, 200.0
 villano, J.R.R.Tolkien, Sauron, 0.0, 150.0, 200.0, 300.0
 heroe, Bruce Waine, Batman, 300.0, 200.0, 400.0, 100.0
-heroe, Hakerman, Virus, -100.0, 0.0, 100000.0, 230002.0
+heroe, Hakerman, Virus, 100.0, 0.0, 100000.0, 230002.0
 villano, Edward Nygma, Acertijo, 100.0, 100.0, 100.0, 100.0
 heroe, Tony Stark, Iron Man, 200.0, 300.0, 300.0, 200.0
 heroe, Stan Lee, Deadpool, 100.0, 500.0, 1000.0, 100.0
@@ -18,3 +18,15 @@ villano, Tarkin, Gran Moff Tarkin, 10.0, 100.0, 200.0, 400.0
 villano, Desconocido, Joker, 100.0, 400.0, 400.0, 200.0
 heroe, Capitan Price, Price, 100.0, 300.0, 200.0, 500.0
 villano, Vildimir Makarov, Makarov, 100.0, 300.0, 200.0, 500.0
+villano, Erik Lensher, Magneto, 100.0, 80.0, 150.0, 300.0
+heroe, Diana Prince, Wonder Woman, 200.0, 120.0, 150.0, 200.0
+heroe, Steve Rogers, Capitan America, 500.0, 800.0, 500.0, 400.0
+heroe, Barry Allen, The Flash, 250.0, 120.0, 150.0, 90.0
+villano, Thanos, Thanos, 400.0, 150.0, 300.0, 300.0
+heroe, Thor Odinson, Thor, 200.0, 180.0, 160.0, 200.0
+villano, Harvey Dent, Two Face, 150.0, 200.0, 200.0, 350.0
+villano, Norman Osborn, Green Goblin, 200.0, 250.0, 100.0, 200.0
+heroe, Peter Parker, Spiderman, 150.0, 80.0, 70.0, 120.0
+heroe, Hal Jordan, Green Lantern, 250.0, 120.0, 150.0, 90.0
+villano, Johann Schmidt, Red Skull, 200.0, 200.0, 300.0, 100.0
+villano, Lex Luthor, Lex Luthor, 120.0, 200.0, 300.0, 150.0

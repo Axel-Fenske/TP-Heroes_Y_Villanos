@@ -240,14 +240,19 @@ public class Main {
 	}
 
 	private static void cargarListaLigas(ArrayList<Unidad> listaCompetidores, ArrayList<Liga> listaLigas) {
-		ArchivoLigas archivoHeroes = new ArchivoLigas("ligaHeroes");
-		ArchivoLigas archivoVillanos = new ArchivoLigas("ligasVillanos");
+		try {
+			ArchivoLigas archivoHeroes = new ArchivoLigas("ligaHeroes");
+			ArchivoLigas archivoVillanos = new ArchivoLigas("ligasVillanos");
 
-		listaLigas.addAll(archivoHeroes.leerArchivo(listaCompetidores).stream()
-				.filter(c -> buscarLiga(listaLigas, c.getNombre()) == -1).collect(Collectors.toList()));
-		listaLigas.addAll(archivoVillanos.leerArchivo(listaCompetidores).stream()
-				.filter(c -> buscarLiga(listaLigas, c.getNombre()) == -1).collect(Collectors.toList()));
-	finalmetodo("ligas cargadas correctamente\n");
+			listaLigas.addAll(archivoHeroes.leerArchivo(listaCompetidores).stream()
+					.filter(c -> buscarLiga(listaLigas, c.getNombre()) == -1).collect(Collectors.toList()));
+			listaLigas.addAll(archivoVillanos.leerArchivo(listaCompetidores).stream()
+					.filter(c -> buscarLiga(listaLigas, c.getNombre()) == -1).collect(Collectors.toList()));
+		finalmetodo("ligas cargadas correctamente\n");
+		} catch (Exception e) {
+			System.out.println("error al cargar el archivo" + e);
+		}
+
 	}
 
 	static void crearLiga(ArrayList<Unidad> listaCompetidores, ArrayList<Liga> listaLigas) {
