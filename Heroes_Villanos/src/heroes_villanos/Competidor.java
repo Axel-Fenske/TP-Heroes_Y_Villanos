@@ -1,3 +1,4 @@
+package heroes_villanos;
 public abstract class Competidor {
 	protected String tipo;
 	protected String nombre;

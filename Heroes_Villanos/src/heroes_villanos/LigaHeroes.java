@@ -1,3 +1,4 @@
+package heroes_villanos;
 public class LigaHeroes extends Liga {
 
 	public LigaHeroes(String nombreLiga) {
