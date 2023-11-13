@@ -3,45 +3,62 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
 
-public class ArchivoPersonajes {
+public class ArchivoLigas {
 	private String nombre;
 
-	public ArchivoPersonajes(String nombre) {
+	public ArchivoLigas(String nombre) {
 		this.nombre = nombre;
 	}
 
-	public ArrayList<Unidad> leerArchivo() {
+	public ArrayList<Liga> leerArchivo(ArrayList<Unidad> listaPersonajes) {
 		Scanner scanner = null;
-		ArrayList<Unidad> datos = null;
-
+		HashMap<String,Competidor> mapaCompetidores = new HashMap<String,Competidor>();
+		ArrayList<Liga> ligasCargadas = null;		
+		
 		try {
 			File file = new File("casos de prueba/in/" + this.nombre + ".in");
 			scanner = new Scanner(file);
-			// Especifica la configuración regional que se va a utilizar
 			scanner.useLocale(Locale.ENGLISH);
-			// Para la configuración regional de Argentina, utilizar:
-			// arch.useLocale(new Locale("es_AR"));
 			
-			datos = new ArrayList<>();
-			scanner.nextLine();
+			ligasCargadas = new ArrayList<>();
+			for (int i = 0; i < listaPersonajes.size(); i++) {
+				Unidad unidadDeLaLista = listaPersonajes.get(i);
+				mapaCompetidores.put(unidadDeLaLista.getNombre(), unidadDeLaLista);
+			}
+			
 			while(scanner.hasNext()) {
 				
 				String campos[] = scanner.nextLine().split(", ");
-				datos.add(new Unidad(campos[0], campos[1], campos[2], 
-						Integer.valueOf(campos[3]), Integer.valueOf(campos[4]), Integer.valueOf(campos[5]), Integer.valueOf(campos[6])));
 				
+				String nombre = campos[0];
+				Liga nueva;
+				
+				if(mapaCompetidores.containsKey(campos[1]) && mapaCompetidores.get(campos[1]).getTipo().equals("villano"))
+					nueva = new LigaVillanos(nombre);
+				else nueva = new LigaHeroes(nombre);
+				
+				for (int i = 1; i < campos.length; i++) {
+					Competidor competidor = mapaCompetidores.get(campos[i]);
+					nueva.agregar(competidor);
+				}
+				mapaCompetidores.put(nombre, nueva);
+				ligasCargadas.add(nueva);
 			}
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			// Cerrar el archivo, eso es mucho muy importante
 			scanner.close();
 		}
-		return datos;
+		return ligasCargadas;
 	}
 
 	public void guardarArchivo(ArrayList<Unidad> datos) {

@@ -1,3 +1,4 @@
+
 public class Unidad extends Competidor {
 
 	private String nombreReal;
@@ -40,15 +41,15 @@ public class Unidad extends Competidor {
 		return fuerza;
 	}
 
-	public boolean esGanador(Unidad u2, Caracteristica caracteristica) {
-		if (this == u2)
-			throw new RuntimeException("no se puede pelear con si mismo");
-		double aux = enfrentar(u2, caracteristica);
-		if (aux > 0)
-			return true;
-		return false;
-	}
-
+//	public boolean esGanador(Unidad u2, Caracteristica caracteristica) {
+//		if (this == u2)
+//			throw new RuntimeException("no se puede pelear con si mismo");
+//		double aux = enfrentar(u2, caracteristica);
+//		if (aux > 0)
+//			return true;
+//		return false;
+//	}
+	
 	@Override
 	public String toString() {
 		return "Es un: " + tipo + "\nSu Nombre Real es: " + nombreReal + "\nSu Nombre del Personaje es: " + nombre

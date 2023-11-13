@@ -1,5 +1,3 @@
-import java.util.Iterator;
-
 public abstract class Competidor {
 	protected String tipo;
 	protected String nombre;
@@ -25,10 +23,11 @@ public abstract class Competidor {
 	public boolean esGanador(Competidor u2, Caracteristica c) {
 		if (this == u2)
 			throw new RuntimeException("no se puede pelear con si mismo");
-		if(this.getClass() == u2.getClass()) {
+		if(this.tipo.equals(u2.tipo)) {
 			throw new RuntimeException("no se puede pelear contra su mismo tipo, deben ser enemigos");
 		}
-		double aux = enfrentar(u2, c);
+		double aux = this.compareTo(u2, c);
+		System.out.println(aux);
 		if (aux > 0)
 			return true;
 
@@ -36,67 +35,40 @@ public abstract class Competidor {
 
 	}
 
-	public double gana(double d, double e) {
-		return d - e;
-	}
-
-	protected double enfrentar(Competidor u2, Caracteristica c) {
-			int i=0;
-			double aux=0;
-			while (c.name()!=vector[i]) {
-				i++;	
+	public double compareTo(Competidor o,Caracteristica car) {
+		String caract[] = { "FUERZA", "VELOCIDAD", "DESTREZA", "RESISTENCIA", "FUERZA", "VELOCIDAD", "DESTREZA" };
+		int i = 0, j;
+		double cmp = 0;
+		
+		while (car.name() != (caract[i]))
+			i++;
+		
+		for (j = i; j < i + 4; j++) {
+			
+			if (caract[j].compareTo(Caracteristica.DESTREZA.name()) == 0) {
+				 cmp = this.getDestreza() - o.getDestreza();
+				 if(cmp != 0)
+					 return cmp;
 			}
-			for (int j = i+1;j<i+4;j++) {
-				if(j==1||j==5)
-					aux = gana(this.getVelocidad(), u2.getVelocidad());
-				if(j==2||j==6)
-					aux = gana(this.getFuerza(), u2.getFuerza());
-				if(j==3||j==7)
-					aux = gana(this.getResistencia(), u2.getResistencia());
-				if(j==4)
-					aux = gana(this.getDestreza(), u2.getDestreza());
-				if(aux!=0)
-					return aux;
+			if (caract[j].compareTo(Caracteristica.FUERZA.name()) == 0) {
+				cmp = this.getFuerza() - o.getFuerza();
+				 if(cmp != 0)
+					 return cmp;
 			}
-			return 0;
+			if (caract[j].compareTo(Caracteristica.RESISTENCIA.name()) == 0) {
+				cmp = this.getResistencia() - o.getResistencia();
+				 if(cmp != 0)
+					 return cmp;
+			}
+			if (caract[j].compareTo(Caracteristica.VELOCIDAD.name()) == 0) {
+				cmp = this.getVelocidad() - o.getVelocidad();
+				 if(cmp != 0)
+					 return cmp;
+			}
+			
+		}
 	
+		return cmp;
 	}
-/*
-//		double aux = 0;
-//		if (a < 4) {
-//			if (Caracteristica.toUpperCase() == "FUERZA") {
-//				aux = gana(this.getFuerza(), u2.getFuerza());
-//				if (aux != 0)
-//					return aux;
-//				return enfrentar(u2, "RESISTENCIA", a + 1);
-//			}
-//
-//			if (Caracteristica.toUpperCase() == "RESISTENCIA") {
-//				aux = gana(this.getResistencia(), u2.getResistencia());
-//				if (aux != 0)
-//					return aux;
-//
-//				return enfrentar(u2, "DESTREZA", a + 1);
-//			}
-//
-//			if (Caracteristica.toUpperCase() == "DESTREZA") {
-//				aux = gana(this.getDestreza(), u2.getDestreza());
-//				if (aux != 0)
-//					return aux;
-//
-//				return enfrentar(u2, "VELOCIDAD", a + 1);
-//			}
-//			if (Caracteristica.toUpperCase() == "VELOCIDAD") {
-//				aux = gana(this.getVelocidad(), u2.getVelocidad());
-//				if (aux != 0)
-//					return aux;
-//				return enfrentar(u2, "FUERZA", a + 1);
-//			}
-//
-//			System.out.println("Caracteristica incompatible");
-//		}
-//		return 0;
-//
-//	}
-*/
+	
 }
