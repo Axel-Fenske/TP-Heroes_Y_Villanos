@@ -3,10 +3,7 @@ package heroes_villanos;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
-
-import javax.management.RuntimeErrorException;
 
 public class Main {
 
