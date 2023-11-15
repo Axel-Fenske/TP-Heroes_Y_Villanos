@@ -1,7 +1,7 @@
 package heroes_villanos;
 
 import java.util.ArrayList;
-import java.util.Scanner;
+
 
 public class RealizacionDeCombates {
 	static void menu(ArrayList<Unidad> listaCompetidores, ArrayList<Liga> listaLigas) {
@@ -62,7 +62,7 @@ public class RealizacionDeCombates {
 					else
 						System.out.println(personaje.getNombre() + " ha sido derrotado.");
 				} else
-					System.out.println("Dos personajes no pueden luchar entre si si son del mismo bando.");
+					System.out.println("Dos personajes no pueden luchar entre si, si son del mismo bando.");
 
 			} else
 				System.out.println("No existe el nombre del o los personajes.");
@@ -93,8 +93,7 @@ public class RealizacionDeCombates {
 			{
 				Unidad personaje = listaCompetidores.get(indicePersonaje);
 				Liga equipo = listaLigas.get(indiceLiga);
-personaje.getTipo();
-equipo.getTipo();
+
 				if (personaje.getTipo() != equipo.getTipo()) // VERIFICO SI NO SON DEL MISMO BANDO
 				{
 					if (personaje.esGanador(equipo, Main.caracteristicaPorTeclado()))

@@ -58,142 +58,21 @@ public class Liga extends Competidor {
 		}
 		return false;
 	}
-	public double getCaracteristica() {
+	public double getCaracteristica(Caracteristica c) {
+		
 		double prom = 0;
 		int cant = 0;
 		for (Competidor unidad : liga) {
 			if (unidad instanceof Liga) {
-				if()
-				prom += ((Liga) unidad).sumaVelocidades();
-				cant += ((Liga) unidad).sumaCantidades();
+				prom += unidad.getCaracteristica(c);
+				cant ++;
 			} else {
-				prom += unidad.getVelocidad();
+				prom += unidad.getCaracteristica(c);
 				cant++;
 			}
 		}
 
 		return prom / cant;
-	}
-	public double getVelocidad() {
-		double prom = 0;
-		int cant = 0;
-		for (Competidor unidad : liga) {
-			if (unidad instanceof Liga) {
-				prom += ((Liga) unidad).sumaVelocidades();
-				cant += ((Liga) unidad).sumaCantidades();
-			} else {
-				prom += unidad.getVelocidad();
-				cant++;
-			}
-		}
-
-		return prom / cant;
-	}
-
-	private double sumaVelocidades() {
-		double suma = 0;
-		for (Competidor unidad : liga) {
-			if (unidad instanceof Liga) {
-				suma += ((Liga) unidad).sumaVelocidades();
-			} else {
-				suma += unidad.getVelocidad();
-			}
-		}
-		return suma;
-	}
-
-	private int sumaCantidades() {
-		int suma = 0;
-		for (Competidor unidad : liga) {
-			if (unidad instanceof Liga) {
-				suma += ((Liga) unidad).sumaCantidades();
-			} else {
-				suma++;
-			}
-		}
-		return suma;
-	}
-
-	public double getResistencia() {
-		double prom = 0;
-		int cant = 0;
-		for (Competidor unidad : liga) {
-			if (unidad instanceof Liga) {
-				prom += ((Liga) unidad).sumaResistencia();
-				cant += ((Liga) unidad).sumaCantidades();
-			} else {
-				prom += unidad.getResistencia();
-				cant++;
-			}
-		}
-
-		return prom / cant;
-	}
-
-	private double sumaResistencia() {
-		double suma = 0;
-		for (Competidor unidad : liga) {
-			if (unidad instanceof Liga) {
-				suma += ((Liga) unidad).sumaResistencia();
-			} else {
-				suma += unidad.getResistencia();
-			}
-		}
-		return suma;
-	}
-
-	public double getDestreza() {
-		double prom = 0;
-		int cant = 0;
-		for (Competidor unidad : liga) {
-			if (unidad instanceof Liga) {
-				prom += ((Liga) unidad).sumaDestreza();
-				cant += ((Liga) unidad).sumaCantidades();
-			} else {
-				prom += unidad.getDestreza();
-				cant++;
-			}
-		}
-		return prom / cant;
-	}
-
-	private double sumaDestreza() {
-		double suma = 0;
-		for (Competidor unidad : liga) {
-			if (unidad instanceof Liga) {
-				suma += ((Liga) unidad).sumaDestreza();
-			} else {
-				suma += unidad.getDestreza();
-			}
-		}
-		return suma;
-	}
-
-	public double getFuerza() {
-		double prom = 0;
-		int cant = 0;
-		for (Competidor unidad : liga) {
-			if (unidad instanceof Liga) {
-				prom += ((Liga) unidad).sumaFuerza();
-				cant += ((Liga) unidad).sumaCantidades();
-			} else {
-				prom += unidad.getFuerza();
-				cant++;
-			}
-		}
-		return prom / cant;
-	}
-
-	private double sumaFuerza() {
-		double suma = 0;
-		for (Competidor unidad : liga) {
-			if (unidad instanceof Liga) {
-				suma += ((Liga) unidad).sumaFuerza();
-			} else {
-				suma += unidad.getFuerza();
-			}
-		}
-		return suma;
 	}
 
 	protected boolean eliminar(Competidor v) {

@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import heroes_villanos.Caracteristica;
 import heroes_villanos.Liga;
 import heroes_villanos.Unidad;
 
@@ -35,22 +36,22 @@ public class LigaTest {
 
 	@Test
 	public void testGetVelocidad() {
-		assertEquals(155, liga.getVelocidad(), 0.01);
+		assertEquals(155, liga.getCaracteristica(Caracteristica.VELOCIDAD), 0.01);
 	}
 	
 	@Test
 	public void testGetFuerza() {
-		assertEquals(187.5, liga.getFuerza(), 0.01);
+		assertEquals(187.5, liga.getCaracteristica(Caracteristica.FUERZA), 0.01);
 	}
 	
 	@Test
 	public void testGetResistencia() {
-		assertEquals(202.5, liga.getResistencia(), 0.01);
+		assertEquals(202.5, liga.getCaracteristica(Caracteristica.RESISTENCIA), 0.01);
 	}
 	
 	@Test
 	public void testGetDestreza() {
-		assertEquals(175, liga.getDestreza(), 0.01);
+		assertEquals(175, liga.getCaracteristica(Caracteristica.DESTREZA), 0.01);
 	}
 
 	@Test

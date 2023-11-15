@@ -14,14 +14,7 @@ public abstract class Competidor {
 	public String getNombre() {
 		return nombre;
 	}
-
-	public abstract double getVelocidad();
-
-	public abstract double getFuerza();
-
-	public abstract double getResistencia();
-
-	public abstract double getDestreza();
+	public abstract double getCaracteristica(Caracteristica c);
 
 	public boolean esGanador(Competidor u2, Caracteristica c) {
 		if (this == u2)
@@ -41,29 +34,32 @@ public abstract class Competidor {
 		String caract[] = { "FUERZA", "VELOCIDAD", "DESTREZA", "RESISTENCIA", "FUERZA", "VELOCIDAD", "DESTREZA" };
 		int i = 0, j;
 		double cmp = 0;
-		
+		Caracteristica c;
 		while (car.name() != (caract[i]))
 			i++;
 		
 		for (j = i; j < i + 4; j++) {
-			
-			if (caract[j].compareTo(Caracteristica.DESTREZA.name()) == 0) {
-				 cmp = this.getDestreza() - o.getDestreza();
+			c=Caracteristica.DESTREZA;
+			if (caract[j].compareTo(c.name()) == 0) {
+				 cmp = this.getCaracteristica(c) - o.getCaracteristica(c);
 				 if(cmp != 0)
 					 return cmp;
 			}
-			if (caract[j].compareTo(Caracteristica.FUERZA.name()) == 0) {
-				cmp = this.getFuerza() - o.getFuerza();
+			c=Caracteristica.FUERZA;
+			if (caract[j].compareTo(c.name()) == 0) {
+				cmp = this.getCaracteristica(c) - o.getCaracteristica(c);
 				 if(cmp != 0)
 					 return cmp;
 			}
-			if (caract[j].compareTo(Caracteristica.RESISTENCIA.name()) == 0) {
-				cmp = this.getResistencia() - o.getResistencia();
+			c=Caracteristica.RESISTENCIA;
+			if (caract[j].compareTo(c.name()) == 0) {
+				cmp = this.getCaracteristica(c) - o.getCaracteristica(c);
 				 if(cmp != 0)
 					 return cmp;
 			}
-			if (caract[j].compareTo(Caracteristica.VELOCIDAD.name()) == 0) {
-				cmp = this.getVelocidad() - o.getVelocidad();
+			c=Caracteristica.VELOCIDAD;
+			if (caract[j].compareTo(c.name()) == 0) {
+				cmp = this.getCaracteristica(c) - o.getCaracteristica(c);
 				 if(cmp != 0)
 					 return cmp;
 			}

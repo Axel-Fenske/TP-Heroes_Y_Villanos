@@ -27,21 +27,7 @@ public class Unidad extends Competidor {
 		this.destreza = destreza;
 	}
 
-	public double getVelocidad() {
-		return velocidad;
-	}
 
-	public double getResistencia() {
-		return resistencia;
-	}
-
-	public double getDestreza() {
-		return destreza;
-	}
-
-	public double getFuerza() {
-		return fuerza;
-	}
 
 	public boolean isPerteneceAUnaLiga() {
 		return perteneceAUnaLiga;
@@ -55,6 +41,25 @@ public class Unidad extends Competidor {
 		return tipo + ", " + nombreReal + ", " + nombre
 				+ ", " + velocidad + ", " + fuerza + ", "
 				+ resistencia + ", " + destreza;
+	}
+
+	@Override
+	public double getCaracteristica(Caracteristica c) {
+		if(c==Caracteristica.VELOCIDAD) {
+			return velocidad;
+		}
+		else if(c==Caracteristica.RESISTENCIA){
+			return resistencia;
+		}
+		else if(c==Caracteristica.DESTREZA){
+			return destreza;
+		}
+		else if(c==Caracteristica.FUERZA){
+			return fuerza;
+		}
+		else {
+			throw new RuntimeException("Caracteristica Invalida");
+		}
 	}
 
 }
