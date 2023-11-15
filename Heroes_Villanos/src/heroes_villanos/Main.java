@@ -14,9 +14,7 @@ public class Main {
 		ArrayList<Unidad> listaCompetidores = new ArrayList<Unidad>();
 		ArrayList<Liga> listaLigas = new ArrayList<Liga>();
 		menup = new Scanner(System.in);
-
 		do {
-
 			System.out.println("----------MENU PRINCIPAL----------\n");
 			System.out.println("Seleccione una opcion");
 			System.out.println("1- Administracion de Personajes");
@@ -52,38 +50,42 @@ public class Main {
 	}
 
 	// FUNCIONES GENERICAS DE MAIN UTILIZADAS POR LOS SUB-MENUS
-	protected static boolean validarPersonaje(int indice, List<Unidad> l) {
-
-		if (indice <= l.size() && indice > 0) {
-			// validamos si estamos afuera de rango del indices
+	protected static <E> boolean listar(List<E> listaCompetidores, String mensajeError){
+		int i;
+		if (listaCompetidores.size() >= 1) {
+			for (i = 0; i < listaCompetidores.size(); i++) {
+				System.out.println("------------------------------------------------------");
+				System.out.println("Competidor Nro: " + (i + 1) + "\n" + listaCompetidores.get(i).toString());
+				System.out.println("------------------------------------------------------\n");
+			}
 			return true;
+
+		} else {
+			System.out.println(mensajeError);
 		}
 		return false;
 	}
 
-	protected static boolean validarLiga(int indice, List<Liga> l) {
-
-		if (indice <= l.size() && indice > 0) {
-			// validamos si estamos afuera de rango del indice
-			return true;
-		}
-		return false;
-	}
-
-	protected static int buscarPersonaje(ArrayList<Unidad> listaCompetidores, String nombre) {
+	protected static <E> int buscarCompetidor(ArrayList<E> lista, String nombre) {
 		int indice = -1;
-		int i = 0;
+	    int i = 0;
 
-		while (i < listaCompetidores.size() && indice == -1) {
-			if (listaCompetidores.get(i).getNombre().equals(nombre))
-				indice = i;
+	    while (i < lista.size() && indice == -1) {
 
-			i++;
-		}
+	        if (lista.get(i) instanceof Competidor) {
+	            Competidor competidor = (Competidor) lista.get(i);
+	            if (competidor.getNombre().equals(nombre)) {
+	                indice = i;
+	            }
+	        }
 
-		return indice;
+	        i++;
+	    }
+
+	    return indice;
 	}
 
+	
 	protected static Double cargarDouble(String cadena) {
 		double valor;
 		do {
@@ -133,21 +135,7 @@ public class Main {
 
 	}
 
-	protected static int buscarLiga(ArrayList<Liga> listaLigas, String nombre) {
-		int indice = -1;
-		int i = 0;
-
-		while (i < listaLigas.size() && indice == -1) {
-			if (listaLigas.get(i).getNombre().equals(nombre))
-				indice = i;
-
-			i++;
-		}
-
-		return indice;
-	}
-
-	static Caracteristica caracteristicaPorTeclado() {
+	static Caracteristica cargarCaracteristica() {
 		int caracteristica;
 		System.out.println(
 				"Escoga caracteristica:\n1. Velocidad\r\n" + "2. Fuerza\r\n" + "3. Resistencia\r\n" + "4. Destreza");
@@ -161,7 +149,7 @@ public class Main {
 		return c2;
 	}
 
-	protected static void finalmetodo(String mensaje) {
+	protected static void finalMetodo(String mensaje) {
 		System.out.println(mensaje + "presione cualquier tecla para continuar");
 		menup.nextLine();
 		limpiarPantalla();

@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 import java.util.stream.Collectors;
 
-public class Reportes  {
+public class Reportes {
 	static void menu(ArrayList<Unidad> listaCompetidores, ArrayList<Liga> listaLigas) {
 
 		String menuPrincipal;
@@ -39,8 +39,7 @@ public class Reportes  {
 		AdministracionDePersonajes.listadoPersonaje(l);
 		System.out.println("Ingresar numero de personaje a vencer:");
 		int indice = Main.cargarEntero("Inserte numero del 1 al " + l.size(), 1, l.size());
-
-		Caracteristica c = Main.caracteristicaPorTeclado();
+		Caracteristica c = Main.cargarCaracteristica();
 		Competidor personajeAVencer = l.get(indice - 1);
 		s = s.concat(personajeAVencer + "\nes vencido en \n" + c + "\npor:\n");
 		s = s.concat("PERSONAJES\n");
@@ -50,10 +49,7 @@ public class Reportes  {
 					&& unidad.esGanador(personajeAVencer, c)) {
 				s = s.concat(unidad.toString() + "\n");
 				vencidoXPersonaje = true;
-
 			}
-
-
 		}
 		if (!vencidoXPersonaje)
 			s = s.concat("NINGUNO \n");
@@ -67,15 +63,13 @@ public class Reportes  {
 		}
 		if (!vencidoXLiga)
 			s = s.concat("NINGUNA\n");
-	
 		Reportes.guardarArchivo("VencenA", s);
-
-		Main.finalmetodo("reporte guardado\n");
+		Main.finalMetodo("reporte guardado\n");
 	}
 
 	private static void listadoOrdenadoPersonajes(ArrayList<Unidad> listaCompetidores) {
 		String s = "";
-		Caracteristica c = Main.caracteristicaPorTeclado();
+		Caracteristica c = Main.cargarCaracteristica();
 		s = s.concat("lista ordenada por " + c.name() + "\n");
 		for (Unidad unidad : listaCompetidores.stream().sorted(new CompetidorComparador(c))
 				.collect(Collectors.toList())) {
@@ -84,7 +78,7 @@ public class Reportes  {
 		}
 		Reportes.guardarArchivo("ListaOrdenada por " + c.name() + " ", s);
 
-		Main.finalmetodo("reporte guardado\n");
+		Main.finalMetodo("reporte guardado\n");
 	}
 
 	public static void guardarArchivo(String tipoReporte, String datos) {

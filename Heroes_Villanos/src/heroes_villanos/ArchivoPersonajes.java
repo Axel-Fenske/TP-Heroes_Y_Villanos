@@ -46,7 +46,7 @@ public class ArchivoPersonajes {
 		return datos;
 	}
 
-	public void guardarArchivo(ArrayList<Unidad> datos) {
+	public void guardarArchivo(ArrayList<Unidad> listaCompetidores) {
 		FileWriter file = null;
 		PrintWriter printerWriter = null;
 
@@ -55,9 +55,9 @@ public class ArchivoPersonajes {
 			printerWriter = new PrintWriter(file);
 			
 			printerWriter.print("Héroe/Villano, NombreReal, NombrePersonaje, Velocidad, Fuerza, Resistencia, Destreza\n");
-			for (int i = 0; i < datos.size(); i++) {
+			for (int i = 0; i < listaCompetidores.size(); i++) {
 				// Imprime los datos y hace un salto de linea
-				printerWriter.println(datos.get(i));
+				printerWriter.println(listaCompetidores.get(i));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

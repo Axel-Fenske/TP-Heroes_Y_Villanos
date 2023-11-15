@@ -8,22 +8,23 @@ public class Liga extends Competidor {
 
 	public boolean agregar(Competidor c) {
 
-		if (c.getTipo().toUpperCase().compareTo(this.getTipo().toUpperCase())!=0) {
-			System.out.println("No se puede insertar un "+ c.getTipo() + " en una liga de " + 
-								this.getTipo());
+		if (c.getTipo().toUpperCase().compareTo(this.getTipo().toUpperCase()) != 0) {
+			System.out.println("No se puede insertar un " + c.getTipo() + " en una liga de " + this.getTipo());
 			return false;
 		}
-		if(Liga.extisteEnEstaLiga(this, c)) {
-			System.out.println("el " +  c.getTipo() + " ya pertenece a la liga");
+		if (Liga.extisteEnEstaLiga(this, c)) {
+			if (c instanceof Unidad)
+				System.out.println("el " + c.getTipo() + " \""+ c.nombre.toUpperCase() +"\" ya pertenece a la liga");
+			else
+				System.out.println("un " + c.getTipo()+ " de la liga \"" +c.nombre.toUpperCase() + "\" ya pertenece a la liga actual");
 			return false;
 		}
 		liga.add(c);
 		return true;
 	}
 
-
 	public Liga(String tipo, String nombreLiga) {
-		
+
 		this.tipo = tipo.toLowerCase();
 		this.nombre = nombreLiga;
 	}
@@ -33,15 +34,15 @@ public class Liga extends Competidor {
 		String retorno = "[" + nombre + ", ";
 		for (int i = 0; i < liga.size(); i++) {
 			retorno = retorno.concat(liga.get(i).getNombre());
-			retorno = retorno.concat((i!=liga.size()-1)? ", " : "]");
-		}		
+			retorno = retorno.concat((i != liga.size() - 1) ? ", " : "]");
+		}
 		return retorno;
 	}
 
 	public boolean esLigaDeHeroes() {
 		return this.getClass().getSimpleName().equals("LigaHeroes");
 	}
-	
+
 	public static boolean extisteEnEstaLiga(Liga l, Competidor u) {
 		if (u instanceof Liga) {
 			Liga l2 = (Liga) u;
@@ -58,14 +59,15 @@ public class Liga extends Competidor {
 		}
 		return false;
 	}
+
 	public double getCaracteristica(Caracteristica c) {
-		
+
 		double prom = 0;
 		int cant = 0;
 		for (Competidor unidad : liga) {
 			if (unidad instanceof Liga) {
 				prom += unidad.getCaracteristica(c);
-				cant ++;
+				cant++;
 			} else {
 				prom += unidad.getCaracteristica(c);
 				cant++;

@@ -1,0 +1,18 @@
+villano, Ridder, Voldemort, 500.0, 200.0, 10.0, 100.0
+es vencido en 
+FUERZA
+por:
+PERSONAJES
+heroe, Tony Stark, Iron Man, 200.0, 300.0, 300.0, 200.0
+heroe, Stan Lee, Deadpool, 100.0, 500.0, 1000.0, 100.0
+heroe, Clark Ken, Superman, 1000.0, 1000.0, 10.0, 0.0
+heroe, Capitan Price, Price, 100.0, 300.0, 200.0, 500.0
+heroe, Steve Rogers, Capitan America, 500.0, 800.0, 500.0, 400.0
+
+LIGAS
+[SuperHeroes, Batman, Iron Man]
+[Liga de Heroes, SuperHeroes, Deadpool]
+[Liga de la Justicia, Superman, The Flash, Wonder Woman]
+[Equipo Combate, Capitan America, Spiderman, Green Lantern]
+[Superliga, Liga de la Justicia, Liga de Heroes]
+

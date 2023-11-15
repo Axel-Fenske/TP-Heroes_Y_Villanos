@@ -1,7 +1,8 @@
 package heroes_villanos;
 
 import java.util.ArrayList;
-
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class RealizacionDeCombates {
 	static void menu(ArrayList<Unidad> listaCompetidores, ArrayList<Liga> listaLigas) {
@@ -12,7 +13,6 @@ public class RealizacionDeCombates {
 			System.out.println("Seleccione una opcion\n" + "1 Personaje contra Personaje\r\n"
 					+ "2 Personaje contra Liga (definiendo caracteristica)\r\n"
 					+ "3 Liga contra Liga (definiendo caracteristica)\r\n" + "4 Atras");
-
 
 			menuPrincipal = Main.cargarString("");
 			switch (menuPrincipal) {
@@ -35,120 +35,91 @@ public class RealizacionDeCombates {
 	}
 
 	private static void personajeContraPersonaje(ArrayList<Unidad> listaCompetidores) {
-		String nombrePersonaje;
-		String nombrePersonaje2;
+
 		String salir = "1";
+		List<Unidad> l = null;
 
 		do {
+			l = listaCompetidores.stream().filter(c -> c.getTipo().equals("heroe")).collect(Collectors.toList());
+			Main.listar(l,"");
+			int indice = Main.cargarEntero("Inserte numero del Heroe del 1 al " + l.size(), 1, l.size());
+			Unidad personaje = l.get(indice - 1);
 
-			System.out.println("Ingrese el personaje que desee que luche: ");
-			nombrePersonaje = Main.cargarString("");
-			System.out.println("Ingrese al personaje que desee que luche: ");
-			nombrePersonaje2 = Main.cargarString("");
+			l = listaCompetidores.stream().filter(c -> c.getTipo().equals("villano")).collect(Collectors.toList());
+			Main.listar(l,"");
+			indice = Main.cargarEntero("Inserte numero del Villano del 1 al " + l.size(), 1, l.size());
+			Unidad personaje2 = l.get(indice - 1);
 
-			int indicePersonaje = Main.buscarPersonaje(listaCompetidores, nombrePersonaje);
-			int indicePersonaje2 = Main.buscarPersonaje(listaCompetidores, nombrePersonaje2);
-
-			if (indicePersonaje != -1 && indicePersonaje2 != -1) // VERIFICO SI EXISTE LO QUE PIDE EL USUARIO
-			{
-				Unidad personaje = listaCompetidores.get(indicePersonaje);
-				Unidad personaje2 = listaCompetidores.get(indicePersonaje2);
-
-				if (personaje.getTipo() != personaje2.getTipo()) // VERIFICO SI NO SON DEL MISMO BANDO
-				{
-					if (personaje.esGanador(personaje2, Main.caracteristicaPorTeclado()))
-						System.out
-								.println("\nTu " + personaje.getTipo() + " " + personaje.getNombre() + " ha triunfado");
-					else
-						System.out.println(personaje.getNombre() + " ha sido derrotado.");
-				} else
-					System.out.println("Dos personajes no pueden luchar entre si, si son del mismo bando.");
-
-			} else
-				System.out.println("No existe el nombre del o los personajes.");
+			if (personaje.esGanador(personaje2, Main.cargarCaracteristica()))
+				System.out.println("El " + personaje.getTipo() + " llamado " + personaje.getNombre() + " ha triunfado");
+			else
+				System.out
+						.println("El " + personaje2.getTipo() + " llamado " + personaje2.getNombre() + " ha triunfado");
 
 			System.out.println("Presione 0 para salir al menu. Presione cualquier tecla si desea volver a comenzar.");
 			salir = Main.cargarString("");
 		} while (!salir.equals("0"));
-		Main.finalmetodo("");
+		Main.finalMetodo("");
 	}
 
-	private static void personajeContraLiga(ArrayList<Unidad> listaCompetidores, ArrayList<Liga> listaLigas) {
-
-		String nombrePersonaje;
-		String nombreLiga;
+	private static void personajeContraLiga(ArrayList<Unidad> listComp, ArrayList<Liga> listliga) {
 		String salir = "1";
-
+		List<Liga> l= null;
 		do {
+			Main.listar(listComp,"");
+			int indice = Main.cargarEntero("Inserte numero del Personaje del 1 al " + listComp.size(), 1,
+					listComp.size());
+			Unidad personaje = listComp.get(indice - 1);
 
-			System.out.println("Ingrese el personaje que desee que luche: ");
-			nombrePersonaje = Main.cargarString("");
-			System.out.println("Ingrese la liga que desee que luche: ");
-			nombreLiga = Main.cargarString("");
+			if(personaje.getTipo().compareTo("heroe")==0) {
+				 l = listliga.stream().filter(c -> c.getTipo().equals("villano")).collect(Collectors.toList());
+			}else {
+				 l = listliga.stream().filter(c -> c.getTipo().equals("heroe")).collect(Collectors.toList());
+			}
+				
+			Main.listar(l,"");
+			indice = Main.cargarEntero("Inserte numero del la Liga del 1 al " + l.size(), 1, l.size());
+			Liga liga = l.get(indice - 1);
 
-			int indicePersonaje = Main.buscarPersonaje(listaCompetidores, nombrePersonaje);
-			int indiceLiga = Main.buscarLiga(listaLigas, nombreLiga);
 
-			if (indicePersonaje != -1 && indiceLiga != -1) // VERIFICO SI EXISTE LO QUE PIDE EL USUARIO
-			{
-				Unidad personaje = listaCompetidores.get(indicePersonaje);
-				Liga equipo = listaLigas.get(indiceLiga);
-
-				if (personaje.getTipo() != equipo.getTipo()) // VERIFICO SI NO SON DEL MISMO BANDO
-				{
-					if (personaje.esGanador(equipo, Main.caracteristicaPorTeclado()))
-						System.out
-								.println("\nTu " + personaje.getTipo() + " " + personaje.getNombre() + " ha triunfado");
-					else
-						System.out.println(personaje.getNombre() + " ha sido derrotado.");
-				} else
-					System.out.println("Un personaje y una liga no pueden luchar entre si si son del mismo bando.");
-
-			} else
-				System.out.println("No existe el nombre del personaje o liga.");
+				if (personaje.esGanador(liga, Main.cargarCaracteristica()))
+					System.out.println(
+							"El " + personaje.getTipo() + " llamado " + personaje.getNombre() + " ha triunfado");
+				else
+					System.out.println("La liga de " + liga.getTipo() + "s llamada " + liga.getNombre() + " ha triunfado");
 
 			System.out.println("Presione 0 para salir al menu. Presione cualquier tecla si desea volver a comenzar.");
 			salir = Main.cargarString("");
+
 		} while (!salir.equals("0"));
-		Main.finalmetodo("");
+		Main.finalMetodo("");
 	}
 
 	private static void ligaContraLiga(ArrayList<Liga> listaLigas) {
-		String nombreLiga2;
-		String nombreLiga;
 		String salir = "1";
+		List<Liga> l = null;
 
 		do {
+			l = listaLigas.stream().filter(c -> c.getTipo().equals("heroe")).collect(Collectors.toList());
+			Main.listar(l,"");
+			int indice = Main.cargarEntero("Inserte numero de liga de Heroes del 1 al " + l.size(), 1, l.size());
+			Liga c1 = l.get(indice - 1);
+			
+			l = listaLigas.stream().filter(c -> c.getTipo().equals("villano")).collect(Collectors.toList());
+			Main.listar(l,"");
+			indice = Main.cargarEntero("Inserte numero de liga de Villanos del 1 al " + l.size(), 1, l.size());
+			Liga c2 = l.get(indice - 1);
 
-			System.out.println("Ingrese la liga que desee que luche: ");
-			nombreLiga = Main.cargarString("");
-			System.out.println("Ingrese la liga que desee que luche: ");
-			nombreLiga2 = Main.cargarString("");
-
-			int indiceLiga1 = Main.buscarLiga(listaLigas, nombreLiga);
-			int indiceLiga2 = Main.buscarLiga(listaLigas, nombreLiga2);
-
-			if (indiceLiga1 != -1 && indiceLiga2 != -1) // VERIFICO SI EXISTE LO QUE PIDE EL USUARIO
-			{
-				Liga l1 = listaLigas.get(indiceLiga1);
-				Liga l2 = listaLigas.get(indiceLiga2);
-
-				if (l1.getTipo() != l2.getTipo()) // VERIFICO SI NO SON DEL MISMO BANDO
-				{
-					if (l1.esGanador(l2, Main.caracteristicaPorTeclado()))
-						System.out.println("\nTu liga " + l1.getNombre() + " ha triunfado");
-					else
-						System.out.println(l1.getNombre() + "ha sido derrotado.");
-				} else
-					System.out.println("Dos ligas no pueden luchar entre si si son del mismo bando.");
-
-			} else
-				System.out.println("No existe el nombre del o las ligas.");
+				if (c1.esGanador(c2, Main.cargarCaracteristica()))
+					System.out.println("La liga de " + c1.getTipo() + "s llamada " + c1.getNombre() + " ha triunfado");
+				else
+					System.out.println("La liga de " + c2.getTipo() + "s llamada " + c2.getNombre() + " ha triunfado");
 
 			System.out.println("Presione 0 para salir al menu. Presione cualquier tecla si desea volver a comenzar.");
 			salir = Main.cargarString("");
 		} while (!salir.equals("0"));
-		Main.finalmetodo("");
+		Main.finalMetodo("");
+
 	}
 
 }

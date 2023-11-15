@@ -28,7 +28,7 @@ public class AdministracionDePersonajes {
 				break;
 			case ("3"):
 				listadoPersonaje(listaCompetidores);
-				Main.finalmetodo("listado de personajes\n");
+				Main.finalMetodo("listado de personajes\n");
 				break;
 			case ("4"):
 				guardarListaPersonajes(listaCompetidores);
@@ -48,13 +48,13 @@ public class AdministracionDePersonajes {
 		try {
 			ArchivoPersonajes archivoPersonajes = new ArchivoPersonajes("personajes");
 			listaCompetidores.addAll(archivoPersonajes.leerArchivo().stream()
-					.filter(c -> Main.buscarPersonaje(listaCompetidores, c.getNombre()) == -1)
+					.filter(c -> Main.buscarCompetidor(listaCompetidores, c.getNombre()) == -1)
 					.collect(Collectors.toList()));
 
 		} catch (Exception e) {
 			System.out.println(e);
 		}
-		Main.finalmetodo("archivo cargado correctamente\n");
+		Main.finalMetodo("archivo cargado correctamente\n");
 
 	}
 
@@ -98,7 +98,7 @@ public class AdministracionDePersonajes {
 			do {
 				yaExiste = false;
 				nombreCompetidor = menup.nextLine();
-				if (Main.buscarPersonaje(listaCompetidores, nombreCompetidor) != -1) {
+				if (Main.buscarCompetidor(listaCompetidores, nombreCompetidor) != -1) {
 					yaExiste = true;
 					System.out.println("Personajes ya existe, ingresar otro nombre:");
 				}
@@ -120,28 +120,12 @@ public class AdministracionDePersonajes {
 			System.out.println(
 					"\n--------Ingrese un valor distinto de 0 para seguir ingresando Competidores o Ingrese 0 para salir-----------\n");
 			valor = menup.nextLine();
-
 		}
 		Main.limpiarPantalla();
-
 	}
 
 	static boolean listadoPersonaje(List<Unidad> listaCompetidores) {
-
-		int i;
-		if (listaCompetidores.size() >= 1) {
-			for (i = 0; i < listaCompetidores.size(); i++) {
-				System.out.println("------------------------------------------------------");
-				System.out.println("Competidor Nro: " + (i + 1) + "\n" + listaCompetidores.get(i).toString());
-				System.out.println("------------------------------------------------------\n");
-			}
-			return true;
-
-		} else {
-			System.out.println("No Hay Lista de Personajes");
-		}
-		return false;
-
+		return Main.listar(listaCompetidores,"No hay lista de personajes");
 	}
 
 	private static void guardarListaPersonajes(ArrayList<Unidad> listaCompetidores) {
@@ -152,7 +136,7 @@ public class AdministracionDePersonajes {
 		} catch (Exception e) {
 			System.out.println(e);
 		}
-		Main.finalmetodo("personajes guardados\n");
+		Main.finalMetodo("personajes guardados\n");
 
 	}
 }

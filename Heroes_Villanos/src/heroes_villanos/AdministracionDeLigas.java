@@ -26,9 +26,9 @@ public class AdministracionDeLigas {
 				break;
 			case ("3"):
 				if (listaLigas(listaLigas))
-					Main.finalmetodo("listado de ligas\n");
+					Main.finalMetodo("listado de ligas\n");
 				else
-					Main.finalmetodo("");
+					Main.finalMetodo("");
 				break;
 			case ("4"):
 				guardarListaLigas(listaLigas);
@@ -49,10 +49,10 @@ public class AdministracionDeLigas {
 			ArchivoLigas archivoVillanos = new ArchivoLigas("ligasVillanos");
 
 			listaLigas.addAll(archivoHeroes.leerArchivo(listaCompetidores).stream()
-					.filter(c -> Main.buscarLiga(listaLigas, c.getNombre()) == -1).collect(Collectors.toList()));
+					.filter(c -> Main.buscarCompetidor(listaLigas, c.getNombre()) == -1).collect(Collectors.toList()));
 			listaLigas.addAll(archivoVillanos.leerArchivo(listaCompetidores).stream()
-					.filter(c -> Main.buscarLiga(listaLigas, c.getNombre()) == -1).collect(Collectors.toList()));
-			Main.finalmetodo("ligas cargadas correctamente\n");
+					.filter(c -> Main.buscarCompetidor(listaLigas, c.getNombre()) == -1).collect(Collectors.toList()));
+			Main.finalMetodo("ligas cargadas correctamente\n");
 		} catch (Exception e) {
 			System.out.println("error al cargar el archivo" + e);
 		}
@@ -73,7 +73,7 @@ public class AdministracionDeLigas {
 			yaExiste = false;
 			System.out.println("Ingrese nombre de la liga:");
 			nombreLiga = Main.cargarString("");
-			if (Main.buscarLiga(listaLigas, nombreLiga) != -1) {
+			if (Main.buscarCompetidor(listaLigas, nombreLiga) != -1) {
 				System.out.println("Liga ya existente, ingresar un nombre diferente:");
 				yaExiste = true;
 			}
@@ -135,7 +135,7 @@ public class AdministracionDeLigas {
 					l = listaLigas.stream().filter(c -> c.getTipo().equals("villano")).collect(Collectors.toList());
 				}
 
-				if (listaLigas(l)) {
+				if ((Main.listar(l,"No Hay ligas disponibles"))) {
 					
 					indice = Main.cargarEntero("Inserte numero del 1 al " + l.size(),1,l.size());
 					if (liga.agregar(l.get(indice - 1)))
@@ -147,24 +147,11 @@ public class AdministracionDeLigas {
 		} while (!input.equals("0"));
 
 		listaLigas.add(liga);
-		Main.finalmetodo("");
+		Main.finalMetodo("");
 	}
 
 	static boolean listaLigas(List<Liga> listaLigas) {
-
-		int i;
-		if (listaLigas.size() >= 1) {
-			for (i = 0; i < listaLigas.size(); i++) {
-				System.out.println("------------------------------------------------------");
-				System.out.println("Liga Nro: " + (i + 1) + "\n" + listaLigas.get(i).toString());
-				System.out.println("------------------------------------------------------\n");
-			}
-			return true;
-		} else {
-			System.out.println("No Hay Lista de Ligas");
-		}
-		return false;
-
+		return Main.listar(listaLigas,"No hay lista de Ligas");
 	}
 
 	private static void guardarListaLigas(ArrayList<Liga> listaLigas) {
@@ -174,7 +161,7 @@ public class AdministracionDeLigas {
 		ArchivoLigas archivoVillanos = new ArchivoLigas("ligasVillanos");
 		archivoVillanos.guardarArchivo(
 				listaLigas.stream().filter(c -> c.esLigaDeHeroes() == false).collect(Collectors.toList()));
-		Main.finalmetodo("lista guardada\n");
+		Main.finalMetodo("lista guardada\n");
 	}
 
 }
