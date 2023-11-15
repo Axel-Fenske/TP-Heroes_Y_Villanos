@@ -6,7 +6,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import heroes_villanos.Liga;
-import heroes_villanos.LigaVillanos;
 import heroes_villanos.Unidad;
 
 public class LigaTest {
@@ -16,14 +15,14 @@ public class LigaTest {
 	@Before
 	public void setUp() {
 		
-		liga = new LigaVillanos("superliga");
+		liga = new Liga("Villano","superliga");
 		
 		Unidad u1 = new Unidad("villano", "Anakin Skywalker", "Darth Vader", 20, 300, 500, 200);
 		Unidad u2 = new Unidad("villano", "J.R.R.Tolkien", "Sauron", 0, 150, 200, 300);
 		Unidad u3 = new Unidad("villano", "Edward Nygma", "Acertijo", 100, 100, 100, 100);
 		Unidad u4 = new Unidad("villano", "Ridder", "Voldemort", 500, 200, 10, 100);
 		
-		Liga liga2 = new LigaVillanos("subliga");
+		Liga liga2 = new Liga("Villano","subliga");
 		
 		liga2.agregar(u3);
 		liga2.agregar(u4);
@@ -66,12 +65,12 @@ public class LigaTest {
 		Unidad u3 = new Unidad("villano", "Edward Nygma", "Acertijo", 100, 100, 100, 100);
 		Unidad u4 = new Unidad("villano", "Ridder", "Voldemort", 500, 200, 10, 100);
 		
-		LigaVillanos liga2 = new LigaVillanos("subliga");
+		Liga liga2 = new Liga("Villano","subliga");
 		
 		liga2.agregar(u3);
 		liga2.agregar(u4);
 		
-		liga2.eliminarVillano(u4);
+		liga2.eliminarLiga(u4);
 		
 		assertFalse(Liga.extisteEnEstaLiga(liga2, u4));
 		

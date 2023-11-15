@@ -2,14 +2,29 @@ package heroes_villanos;
 
 import java.util.ArrayList;
 
-public abstract class Liga extends Competidor {
+public class Liga extends Competidor {
 
 	ArrayList<Competidor> liga = new ArrayList<Competidor>();
 
-	public abstract boolean agregar(Competidor u);
+	public boolean agregar(Competidor c) {
+
+		if (c.getTipo().toUpperCase().compareTo(this.getTipo().toUpperCase())!=0) {
+			System.out.println("No se puede insertar un "+ c.getTipo() + " en una liga de " + 
+								this.getTipo());
+			return false;
+		}
+		if(Liga.extisteEnEstaLiga(this, c)) {
+			System.out.println("el " +  c.getTipo() + " ya pertenece a la liga");
+			return false;
+		}
+		liga.add(c);
+		return true;
+	}
+
 
 	public Liga(String tipo, String nombreLiga) {
-		this.tipo = tipo;
+		
+		this.tipo = tipo.toLowerCase();
 		this.nombre = nombreLiga;
 	}
 
@@ -43,7 +58,22 @@ public abstract class Liga extends Competidor {
 		}
 		return false;
 	}
+	public double getCaracteristica() {
+		double prom = 0;
+		int cant = 0;
+		for (Competidor unidad : liga) {
+			if (unidad instanceof Liga) {
+				if()
+				prom += ((Liga) unidad).sumaVelocidades();
+				cant += ((Liga) unidad).sumaCantidades();
+			} else {
+				prom += unidad.getVelocidad();
+				cant++;
+			}
+		}
 
+		return prom / cant;
+	}
 	public double getVelocidad() {
 		double prom = 0;
 		int cant = 0;
@@ -184,7 +214,7 @@ public abstract class Liga extends Competidor {
 		return false;
 	}
 
-	protected boolean eliminarLiga(Competidor v) {
+	public boolean eliminarLiga(Competidor v) {
 		for (Competidor bando : liga) {
 			if (bando.getNombre().compareTo(v.getNombre()) == 0 && bando instanceof Liga) {
 				System.out.println(

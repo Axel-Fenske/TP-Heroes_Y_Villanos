@@ -41,8 +41,8 @@ public class ArchivoLigas {
 				Liga nueva;
 				
 				if(mapaCompetidores.containsKey(campos[1]) && mapaCompetidores.get(campos[1]).getTipo().equals("villano"))
-					nueva = new LigaVillanos(nombre);
-				else nueva = new LigaHeroes(nombre);
+					nueva = new Liga("villano",nombre);
+				else nueva = new Liga("heroe",nombre);
 				
 				for (int i = 1; i < campos.length; i++) {
 					Competidor competidor = mapaCompetidores.get(campos[i]);

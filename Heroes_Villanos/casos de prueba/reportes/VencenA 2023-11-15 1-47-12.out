@@ -1,0 +1,16 @@
+villano, Lex Luthor, Lex Luthor, 120.0, 200.0, 300.0, 150.0
+es vencido en 
+RESISTENCIA
+por:
+PERSONAJES
+heroe, Bruce Waine, Batman, 300.0, 200.0, 400.0, 100.0
+heroe, Hakerman, Virus, 100.0, 0.0, 100000.0, 230002.0
+heroe, Tony Stark, Iron Man, 200.0, 300.0, 300.0, 200.0
+heroe, Stan Lee, Deadpool, 100.0, 500.0, 1000.0, 100.0
+heroe, Steve Rogers, Capitan America, 500.0, 800.0, 500.0, 400.0
+
+LIGAS
+[SuperHeroes, Batman, Iron Man]
+[Liga de Heroes, SuperHeroes, Deadpool]
+[Superliga, Liga de la Justicia, Liga de Heroes]
+
