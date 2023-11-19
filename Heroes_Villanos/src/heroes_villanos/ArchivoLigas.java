@@ -71,7 +71,7 @@ public class ArchivoLigas {
 			printerWriter = new PrintWriter(file);
 
 			for (int i = 0; i < listaLigas.size(); i++) {
-				// Imprime los datos y hace un salto de linea
+
 				printerWriter.println(listaLigas.get(i));
 			}
 		} catch (Exception e) {
