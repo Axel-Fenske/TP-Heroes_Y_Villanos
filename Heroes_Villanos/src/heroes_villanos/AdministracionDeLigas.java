@@ -25,10 +25,8 @@ public class AdministracionDeLigas {
 				crearLiga(listaCompetidores, listaLigas);
 				break;
 			case ("3"):
-				if (listaLigas(listaLigas))
-					Main.finalMetodo("listado de ligas\n");
-				else
-					Main.finalMetodo("");
+				Main.listar(listaLigas,"No hay lista de Ligas");
+				Main.finalMetodo("");
 				break;
 			case ("4"):
 				guardarListaLigas(listaLigas);
@@ -113,7 +111,7 @@ public class AdministracionDeLigas {
 					l = listaCompetidores.stream().filter(c -> c.getTipo().equals("villano"))
 							.collect(Collectors.toList());
 				}
-				if (AdministracionDePersonajes.listadoPersonaje(l)) {
+				if (Main.listar(l,"")) {
 
 					indice = Main.cargarEntero("Inserte numero del 1 al " + l.size()
 							,1,l.size());
@@ -150,9 +148,6 @@ public class AdministracionDeLigas {
 		Main.finalMetodo("");
 	}
 
-	static boolean listaLigas(List<Liga> listaLigas) {
-		return Main.listar(listaLigas,"No hay lista de Ligas");
-	}
 
 	private static void guardarListaLigas(ArrayList<Liga> listaLigas) {
 		ArchivoLigas archivoHeroes = new ArchivoLigas("ligaHeroes");

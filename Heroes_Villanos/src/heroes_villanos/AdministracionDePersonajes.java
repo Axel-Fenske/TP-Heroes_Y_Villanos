@@ -29,7 +29,7 @@ public class AdministracionDePersonajes {
 				crearPersonaje(listaCompetidores);
 				break;
 			case ("3"):
-				listadoPersonaje(listaCompetidores);
+				Main.listar(listaCompetidores, "No hay lista de personajes");
 				Main.finalMetodo("listado de personajes\n");
 				break;
 			case ("4"):
@@ -150,10 +150,6 @@ public class AdministracionDePersonajes {
 			valor = menup.nextLine();
 		}
 		Main.limpiarPantalla();
-	}
-
-	static boolean listadoPersonaje(List<Unidad> listaCompetidores) {
-		return Main.listar(listaCompetidores, "No hay lista de personajes");
 	}
 
 	private static void guardarListaPersonajes(ArrayList<Unidad> listaCompetidores) {

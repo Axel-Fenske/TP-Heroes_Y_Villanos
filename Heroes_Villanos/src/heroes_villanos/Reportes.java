@@ -36,7 +36,7 @@ public class Reportes {
 	private static void todosLosQueVencenAPersonajeEnCaracteristica(ArrayList<Unidad> l, ArrayList<Liga> listaLigas) {
 
 		String s = "";
-		AdministracionDePersonajes.listadoPersonaje(l);
+		Main.listar(l,"");
 		System.out.println("Ingresar numero de personaje a vencer:");
 		int indice = Main.cargarEntero("Inserte numero del 1 al " + l.size(), 1, l.size());
 		Caracteristica c = Main.cargarCaracteristica();

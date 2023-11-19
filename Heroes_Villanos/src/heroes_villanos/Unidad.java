@@ -45,21 +45,8 @@ public class Unidad extends Competidor {
 
 	@Override
 	public double getCaracteristica(Caracteristica c) {
-		if(c==Caracteristica.VELOCIDAD) {
-			return velocidad;
-		}
-		else if(c==Caracteristica.RESISTENCIA){
-			return resistencia;
-		}
-		else if(c==Caracteristica.DESTREZA){
-			return destreza;
-		}
-		else if(c==Caracteristica.FUERZA){
-			return fuerza;
-		}
-		else {
-			throw new RuntimeException("Caracteristica Invalida");
-		}
+		double[] vec = {velocidad,fuerza,resistencia,destreza};
+		return vec[c.ordinal()];
 	}
 
 }

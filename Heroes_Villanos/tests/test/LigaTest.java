@@ -58,7 +58,7 @@ public class LigaTest {
 	public void testExisteEnEstaLiga() {
 		Unidad u1 = new Unidad("villano", "Anakin Skywalker", "Darth Vader", 20, 300, 500, 200);
 		
-		assertTrue(Liga.extisteEnEstaLiga(liga, u1));
+		assertTrue(Liga.existeEnEstaLiga(liga, u1));
 	}
 	
 	
@@ -74,6 +74,18 @@ public class LigaTest {
 		Unidad u2 = new Unidad("villano", "J.R.R.Tolkien", "Sauron", 0, 150, 200, 300);
 		
 		assertFalse(liga.agregar(u2));
+		
+	}
+	
+	@Test 
+	public void noConfundeUnidadYLigaConElMismoNombre() {
+		Unidad u1 = new Unidad("villano", "Anakin Skywalker", "villano", 20, 300, 500, 200);
+		Liga liga1 = new Liga("Villano","liga1");
+		Liga liga3 = new Liga("Villano","villano");
+		liga1.agregar(liga3);
+		
+		assertFalse(Liga.existeEnEstaLiga(liga1,u1));
+		
 		
 	}
 }

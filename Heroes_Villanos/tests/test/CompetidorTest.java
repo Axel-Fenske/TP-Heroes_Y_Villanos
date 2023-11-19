@@ -73,5 +73,6 @@ public class CompetidorTest {
 		
 		u1.esGanador(u2, Caracteristica.FUERZA);
 	}
+
 	
 }
