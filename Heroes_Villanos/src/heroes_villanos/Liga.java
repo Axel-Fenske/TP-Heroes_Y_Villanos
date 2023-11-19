@@ -77,34 +77,4 @@ public class Liga extends Competidor {
 
 		return prom / cant;
 	}
-
-	protected boolean eliminar(Competidor v) {
-
-		for (Competidor bando : liga) {
-			if (bando instanceof Liga) {
-				if (extisteEnEstaLiga((Liga) bando, v))
-					if (((Liga) bando).eliminar(v)) {
-						if (((Liga) bando).liga.size() == 0) {
-							return this.eliminarLiga(bando);
-						} else {
-							return true;
-						}
-					}
-			} else if (bando.getNombre().compareTo(v.getNombre()) == 0)
-				return liga.remove(v);
-		}
-		return false;
-	}
-
-	public boolean eliminarLiga(Competidor v) {
-		for (Competidor bando : liga) {
-			if (bando.getNombre().compareTo(v.getNombre()) == 0 && bando instanceof Liga) {
-				System.out.println(
-						"liga '" + v.getNombre() + "' eliminada de '" + this.getNombre() + "' porque estaba vacia");
-				return this.liga.remove(bando);
-			}
-
-		}
-		return false;
-	}
 }

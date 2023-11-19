@@ -1,5 +1,7 @@
 package heroes_villanos;
 
+import java.io.File;
+import java.io.FilenameFilter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -46,7 +48,33 @@ public class AdministracionDePersonajes {
 	private static void cargarListaPersonajes(ArrayList<Unidad> listaCompetidores) {
 
 		try {
-			ArchivoPersonajes archivoPersonajes = new ArchivoPersonajes("personajes");
+			File file = new File("casos de prueba/in/");
+			File[] files = file.listFiles(new FilenameFilter() {
+
+				@Override
+				public boolean accept(File dir, String name) {
+					return name.contains("personajes");
+				}
+			});
+
+			ArchivoPersonajes archivoPersonajes = null;
+			if (files.length > 1) {
+				String nombreArchivo = null;
+				System.out.println("Elegir archivo de personajes: ");
+				for (int i = 0; i < files.length; i++) {
+					nombreArchivo = files[i].toString().replace("casos de prueba\\in\\", "").replace(".in", "");
+					System.out.println((i + 1) + ". " + nombreArchivo);
+				}
+				int eleccion;
+				do {
+					eleccion = menup.nextInt();
+				} while (eleccion < 1 || eleccion > files.length);
+
+				nombreArchivo = files[eleccion - 1].toString().replace("casos de prueba\\in\\", "").replace(".in", "");
+				archivoPersonajes = new ArchivoPersonajes(nombreArchivo);
+			} else
+				archivoPersonajes = new ArchivoPersonajes("personajes");
+
 			listaCompetidores.addAll(archivoPersonajes.leerArchivo().stream()
 					.filter(c -> Main.buscarCompetidor(listaCompetidores, c.getNombre()) == -1)
 					.collect(Collectors.toList()));
@@ -125,7 +153,7 @@ public class AdministracionDePersonajes {
 	}
 
 	static boolean listadoPersonaje(List<Unidad> listaCompetidores) {
-		return Main.listar(listaCompetidores,"No hay lista de personajes");
+		return Main.listar(listaCompetidores, "No hay lista de personajes");
 	}
 
 	private static void guardarListaPersonajes(ArrayList<Unidad> listaCompetidores) {

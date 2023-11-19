@@ -69,5 +69,11 @@ public class LigaTest {
 		assertFalse(liga.agregar(u));
 		
 	}
-
+	@Test
+	public void testAgregarDosVecesAUnaLiga_SubLiga() {
+		Unidad u2 = new Unidad("villano", "J.R.R.Tolkien", "Sauron", 0, 150, 200, 300);
+		
+		assertFalse(liga.agregar(u2));
+		
+	}
 }

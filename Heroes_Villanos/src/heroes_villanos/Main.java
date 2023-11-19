@@ -52,10 +52,11 @@ public class Main {
 	// FUNCIONES GENERICAS DE MAIN UTILIZADAS POR LOS SUB-MENUS
 	protected static <E> boolean listar(List<E> listaCompetidores, String mensajeError){
 		int i;
+		
 		if (listaCompetidores.size() >= 1) {
 			for (i = 0; i < listaCompetidores.size(); i++) {
 				System.out.println("------------------------------------------------------");
-				System.out.println("Competidor Nro: " + (i + 1) + "\n" + listaCompetidores.get(i).toString());
+				System.out.println(listaCompetidores.get(i).getClass().getSimpleName() + " Nro: " + (i + 1) + "\n" + listaCompetidores.get(i).toString());
 				System.out.println("------------------------------------------------------\n");
 			}
 			return true;
@@ -85,7 +86,6 @@ public class Main {
 	    return indice;
 	}
 
-	
 	protected static Double cargarDouble(String cadena) {
 		double valor;
 		do {

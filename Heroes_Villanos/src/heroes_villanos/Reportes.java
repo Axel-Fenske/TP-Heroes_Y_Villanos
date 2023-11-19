@@ -87,8 +87,8 @@ public class Reportes {
 		LocalDateTime datetime = LocalDateTime.now();
 		try {
 			file = new FileWriter("casos de prueba/reportes/" + tipoReporte + " " + datetime.getYear() + "-"
-					+ datetime.getMonthValue() + "-" + datetime.getDayOfMonth() + " " + datetime.getHour() + "-"
-					+ datetime.getMinute() + "-" + datetime.getSecond() + ".out");
+					+ datetime.getMonthValue() + "-" + datetime.getDayOfMonth() + " " + String.format("%01d",datetime.getHour()) + "-"
+					+ String.format("%01d",datetime.getMinute()) + "-" + String.format("%01d",datetime.getSecond()) + ".out");
 			printerWriter = new PrintWriter(file);
 
 			// Imprime los datos y hace un salto de linea
