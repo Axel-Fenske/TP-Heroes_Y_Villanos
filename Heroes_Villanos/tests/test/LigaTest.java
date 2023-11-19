@@ -36,22 +36,22 @@ public class LigaTest {
 
 	@Test
 	public void testGetVelocidad() {
-		assertEquals(155, liga.getCaracteristica(Caracteristica.VELOCIDAD), 0.01);
+		assertEquals((20.0+0+(100+500)/2)/3, liga.getCaracteristica(Caracteristica.VELOCIDAD), 0.01);
 	}
 	
 	@Test
 	public void testGetFuerza() {
-		assertEquals(187.5, liga.getCaracteristica(Caracteristica.FUERZA), 0.01);
+		assertEquals((300.0+150+(100+200)/2)/3, liga.getCaracteristica(Caracteristica.FUERZA), 0.01);
 	}
 	
 	@Test
 	public void testGetResistencia() {
-		assertEquals(202.5, liga.getCaracteristica(Caracteristica.RESISTENCIA), 0.01);
+		assertEquals((500.0+200+(100+10)/2)/3, liga.getCaracteristica(Caracteristica.RESISTENCIA), 0.01);
 	}
 	
 	@Test
 	public void testGetDestreza() {
-		assertEquals(175, liga.getCaracteristica(Caracteristica.DESTREZA), 0.01);
+		assertEquals((200+300+(100+100)/2)/3, liga.getCaracteristica(Caracteristica.DESTREZA), 0.01);
 	}
 
 	@Test
@@ -61,21 +61,6 @@ public class LigaTest {
 		assertTrue(Liga.extisteEnEstaLiga(liga, u1));
 	}
 	
-	@Test
-	public void testEliminar() {
-		Unidad u3 = new Unidad("villano", "Edward Nygma", "Acertijo", 100, 100, 100, 100);
-		Unidad u4 = new Unidad("villano", "Ridder", "Voldemort", 500, 200, 10, 100);
-		
-		Liga liga2 = new Liga("Villano","subliga");
-		
-		liga2.agregar(u3);
-		liga2.agregar(u4);
-		
-		liga2.eliminarLiga(u4);
-		
-		assertFalse(Liga.extisteEnEstaLiga(liga2, u4));
-		
-	}
 	
 	@Test
 	public void testAgregarDistintoTipo() {

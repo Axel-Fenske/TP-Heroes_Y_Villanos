@@ -33,7 +33,7 @@ public class ArchivoPersonajes {
 				
 				String campos[] = scanner.nextLine().split(", ");
 				datos.add(new Unidad(campos[0], campos[1], campos[2], 
-						Integer.valueOf(campos[3]), Integer.valueOf(campos[4]), Integer.valueOf(campos[5]), Integer.valueOf(campos[6])));
+						Double.valueOf(campos[3]), Double.valueOf(campos[4]), Double.valueOf(campos[5]), Double.valueOf(campos[6])));
 				
 			}
 			

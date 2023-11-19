@@ -67,11 +67,12 @@ public class Liga extends Competidor {
 		for (Competidor unidad : liga) {
 			if (unidad instanceof Liga) {
 				prom += unidad.getCaracteristica(c);
-				cant++;
+				
 			} else {
 				prom += unidad.getCaracteristica(c);
-				cant++;
+
 			}
+			cant++;
 		}
 
 		return prom / cant;
