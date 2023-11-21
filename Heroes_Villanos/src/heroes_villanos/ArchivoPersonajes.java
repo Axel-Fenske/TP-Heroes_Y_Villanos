@@ -26,17 +26,17 @@ public class ArchivoPersonajes {
 			scanner.useLocale(Locale.ENGLISH);
 			// Para la configuración regional de Argentina, utilizar:
 			// arch.useLocale(new Locale("es_AR"));
-			
+
 			datos = new ArrayList<>();
 			scanner.nextLine();
-			while(scanner.hasNext()) {
-				
+			while (scanner.hasNext()) {
+
 				String campos[] = scanner.nextLine().split(", ");
-				datos.add(new Unidad(campos[0], campos[1], campos[2], 
-						Double.valueOf(campos[3]), Double.valueOf(campos[4]), Double.valueOf(campos[5]), Double.valueOf(campos[6])));
-				
+				datos.add(new Unidad(campos[0], campos[1], campos[2], Double.valueOf(campos[3]),
+						Double.valueOf(campos[4]), Double.valueOf(campos[5]), Double.valueOf(campos[6])));
+
 			}
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -53,7 +53,8 @@ public class ArchivoPersonajes {
 		try {
 			file = new FileWriter("casos de prueba/out/" + this.nombre + ".out");
 			printerWriter = new PrintWriter(file);
-			printerWriter.print("Héroe/Villano, NombreReal, NombrePersonaje, Velocidad, Fuerza, Resistencia, Destreza\n");
+			printerWriter
+					.print("Héroe/Villano, NombreReal, NombrePersonaje, Velocidad, Fuerza, Resistencia, Destreza\n");
 			for (int i = 0; i < listaCompetidores.size(); i++) {
 				// Imprime los datos y hace un salto de linea
 				printerWriter.println(listaCompetidores.get(i));

@@ -43,7 +43,7 @@ public class RealizacionDeCombates {
 
 		String salir = "1";
 		List<Unidad> l = null;
-		if (listaCompetidores.size()==0 )
+		if (listaCompetidores.size() == 0)
 			throw new RuntimeException("error, lista vacia");
 		do {
 			l = listaCompetidores.stream().filter(c -> c.getTipo().equals("heroe")).collect(Collectors.toList());
@@ -72,7 +72,7 @@ public class RealizacionDeCombates {
 		String salir = "1";
 		List<Liga> l = null;
 
-		if (listComp.size()==0 || listliga.size() == 0)
+		if (listComp.size() == 0 || listliga.size() == 0)
 			throw new RuntimeException("error, lista vacia");
 		do {
 			Main.listar(listComp, "");

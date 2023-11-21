@@ -50,13 +50,14 @@ public class Main {
 	}
 
 	// FUNCIONES GENERICAS DE MAIN UTILIZADAS POR LOS SUB-MENUS
-	protected static <E> boolean listar(List<E> listaCompetidores, String mensajeError){
+	protected static <E> boolean listar(List<E> listaCompetidores, String mensajeError) {
 		int i;
-		
+
 		if (listaCompetidores.size() >= 1) {
 			for (i = 0; i < listaCompetidores.size(); i++) {
 				System.out.println("------------------------------------------------------");
-				System.out.println(listaCompetidores.get(i).getClass().getSimpleName() + " Nro: " + (i + 1) + "\n" + listaCompetidores.get(i).toString());
+				System.out.println(listaCompetidores.get(i).getClass().getSimpleName() + " Nro: " + (i + 1) + "\n"
+						+ listaCompetidores.get(i).toString());
 				System.out.println("------------------------------------------------------\n");
 			}
 			return true;
@@ -69,21 +70,21 @@ public class Main {
 
 	protected static <E> int buscarCompetidor(ArrayList<E> lista, String nombre) {
 		int indice = -1;
-	    int i = 0;
+		int i = 0;
 
-	    while (i < lista.size() && indice == -1) {
+		while (i < lista.size() && indice == -1) {
 
-	        if (lista.get(i) instanceof Competidor) {
-	            Competidor competidor = (Competidor) lista.get(i);
-	            if (competidor.getNombre().equals(nombre)) {
-	                indice = i;
-	            }
-	        }
+			if (lista.get(i) instanceof Competidor) {
+				Competidor competidor = (Competidor) lista.get(i);
+				if (competidor.getNombre().equals(nombre)) {
+					indice = i;
+				}
+			}
 
-	        i++;
-	    }
+			i++;
+		}
 
-	    return indice;
+		return indice;
 	}
 
 	protected static Double cargarDouble(String cadena) {
@@ -104,15 +105,15 @@ public class Main {
 	}
 
 	protected static String cargarString(String cadena) {
-		String valor="";
-			try {
-				if (cadena.compareTo("") != 0)
-					System.out.println(cadena);
-				valor = menup.nextLine();
+		String valor = "";
+		try {
+			if (cadena.compareTo("") != 0)
+				System.out.println(cadena);
+			valor = menup.nextLine();
 
-			} catch (Exception e) {
-				System.out.println("error " + e);
-			}
+		} catch (Exception e) {
+			System.out.println("error " + e);
+		}
 
 		return valor;
 

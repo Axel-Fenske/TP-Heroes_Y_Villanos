@@ -1,8 +1,7 @@
 package heroes_villanos;
 
-
 public class Unidad extends Competidor {
-	private boolean perteneceAUnaLiga=false;
+	private boolean perteneceAUnaLiga = false;
 	private String nombreReal;
 	private double velocidad;
 	private double fuerza;
@@ -16,8 +15,8 @@ public class Unidad extends Competidor {
 		this.tipo = tipo;
 	}
 
-	public Unidad(String tipo, String nombreReal, String nombrePersonaje, double velocidad,
-			double fuerza, double resistencia,double destreza) {
+	public Unidad(String tipo, String nombreReal, String nombrePersonaje, double velocidad, double fuerza,
+			double resistencia, double destreza) {
 		confirmarTipo(tipo);
 		this.nombreReal = nombreReal;
 		this.nombre = nombrePersonaje;
@@ -27,8 +26,6 @@ public class Unidad extends Competidor {
 		this.destreza = destreza;
 	}
 
-
-
 	public boolean isPerteneceAUnaLiga() {
 		return perteneceAUnaLiga;
 	}
@@ -36,16 +33,16 @@ public class Unidad extends Competidor {
 	public void setPerteneceAUnaLiga() {
 		this.perteneceAUnaLiga = true;
 	}
+
 	@Override
 	public String toString() {
-		return tipo + ", " + nombreReal + ", " + nombre
-				+ ", " + velocidad + ", " + fuerza + ", "
-				+ resistencia + ", " + destreza;
+		return tipo + ", " + nombreReal + ", " + nombre + ", " + velocidad + ", " + fuerza + ", " + resistencia + ", "
+				+ destreza;
 	}
 
 	@Override
 	public double getCaracteristica(Caracteristica c) {
-		double[] vec = {velocidad,fuerza,resistencia,destreza};
+		double[] vec = { velocidad, fuerza, resistencia, destreza };
 		return vec[c.ordinal()];
 	}
 

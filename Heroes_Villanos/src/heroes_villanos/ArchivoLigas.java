@@ -19,41 +19,44 @@ public class ArchivoLigas {
 
 	public ArrayList<Liga> leerArchivo(ArrayList<Unidad> listaPersonajes) {
 		Scanner scanner = null;
-		HashMap<String,Competidor> mapaCompetidores = new HashMap<String,Competidor>();
-		ArrayList<Liga> ligasCargadas = null;		
-		
+		HashMap<String, Competidor> mapaCompetidores = new HashMap<String, Competidor>();
+		ArrayList<Liga> ligasCargadas = null;
+
 		try {
 			File file = new File("casos de prueba/in/" + this.nombre + ".in");
 			scanner = new Scanner(file);
 			scanner.useLocale(Locale.ENGLISH);
-			
+
 			ligasCargadas = new ArrayList<>();
 			for (int i = 0; i < listaPersonajes.size(); i++) {
 				Unidad unidadDeLaLista = listaPersonajes.get(i);
 				mapaCompetidores.put(unidadDeLaLista.getNombre(), unidadDeLaLista);
 			}
-			
-			while(scanner.hasNext()) {
-				
+
+			while (scanner.hasNext()) {
+
 				String campos[] = scanner.nextLine().split(", ");
-				
+
 				String nombre = campos[0];
 				Liga nueva;
-				
-				if(mapaCompetidores.containsKey(campos[1]) && mapaCompetidores.get(campos[1]).getTipo().equals("villano"))
-					nueva = new Liga("villano",nombre);
-				else nueva = new Liga("heroe",nombre);
-				
+
+				if (mapaCompetidores.containsKey(campos[1])
+						&& mapaCompetidores.get(campos[1]).getTipo().equals("villano"))
+					nueva = new Liga("villano", nombre);
+				else
+					nueva = new Liga("heroe", nombre);
+
 				for (int i = 1; i < campos.length; i++) {
 					Competidor competidor = mapaCompetidores.get(campos[i]);
-					if(competidor == null)
-						throw new RuntimeException("no hay suficiente informacion de personajes disponible para cargar ligas");
+					if (competidor == null)
+						throw new RuntimeException(
+								"no hay suficiente informacion de personajes disponible para cargar ligas");
 					nueva.agregar(competidor);
 				}
 				mapaCompetidores.put(nombre, nueva);
 				ligasCargadas.add(nueva);
 			}
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

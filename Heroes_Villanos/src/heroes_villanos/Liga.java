@@ -53,8 +53,7 @@ public class Liga extends Competidor {
 			}
 		} else {
 			for (Competidor b : l.liga) {
-				if (u.getNombre().compareTo(b.getNombre()) == 0
-						&& u.getClass()==b.getClass()
+				if (u.getNombre().compareTo(b.getNombre()) == 0 && u.getClass() == b.getClass()
 						|| ((b instanceof Liga) && existeEnEstaLiga((Liga) b, u)))
 					return true;
 			}

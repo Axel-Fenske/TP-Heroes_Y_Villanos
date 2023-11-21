@@ -15,7 +15,6 @@ public class AdministracionDeLigas {
 			System.out.println("Seleccione una opcion\n" + "1 Carga desde archivo\r\n" + "2 Creacion\r\n"
 					+ "3 Listado\r\n" + "4 Guardar en archivo todas las ligas\n" + "5 Atras");
 
-
 			menuPrincipal = Main.cargarString("");
 			switch (menuPrincipal) {
 			case ("1"):
@@ -25,7 +24,7 @@ public class AdministracionDeLigas {
 				crearLiga(listaCompetidores, listaLigas);
 				break;
 			case ("3"):
-				Main.listar(listaLigas,"No hay lista de Ligas");
+				Main.listar(listaLigas, "No hay lista de Ligas");
 				Main.finalMetodo("");
 				break;
 			case ("4"):
@@ -111,10 +110,9 @@ public class AdministracionDeLigas {
 					l = listaCompetidores.stream().filter(c -> c.getTipo().equals("villano"))
 							.collect(Collectors.toList());
 				}
-				if (Main.listar(l,"")) {
+				if (Main.listar(l, "")) {
 
-					indice = Main.cargarEntero("Inserte numero del 1 al " + l.size()
-							,1,l.size());
+					indice = Main.cargarEntero("Inserte numero del 1 al " + l.size(), 1, l.size());
 
 					if (liga.agregar(l.get(indice - 1)))
 						System.out.println("Personaje agregado exitosamente...");
@@ -133,9 +131,9 @@ public class AdministracionDeLigas {
 					l = listaLigas.stream().filter(c -> c.getTipo().equals("villano")).collect(Collectors.toList());
 				}
 
-				if ((Main.listar(l,"No Hay ligas disponibles"))) {
-					
-					indice = Main.cargarEntero("Inserte numero del 1 al " + l.size(),1,l.size());
+				if ((Main.listar(l, "No Hay ligas disponibles"))) {
+
+					indice = Main.cargarEntero("Inserte numero del 1 al " + l.size(), 1, l.size());
 					if (liga.agregar(l.get(indice - 1)))
 						System.out.println("Liga agregada exitosamente...");
 					else
@@ -147,7 +145,6 @@ public class AdministracionDeLigas {
 		listaLigas.add(liga);
 		Main.finalMetodo("");
 	}
-
 
 	private static void guardarListaLigas(ArrayList<Liga> listaLigas) {
 		ArchivoLigas archivoHeroes = new ArchivoLigas("ligaHeroes");

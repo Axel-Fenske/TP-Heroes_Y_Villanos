@@ -36,7 +36,7 @@ public class Reportes {
 	private static void todosLosQueVencenAPersonajeEnCaracteristica(ArrayList<Unidad> l, ArrayList<Liga> listaLigas) {
 
 		String s = "";
-		Main.listar(l,"");
+		Main.listar(l, "");
 		System.out.println("Ingresar numero de personaje a vencer:");
 		int indice = Main.cargarEntero("Inserte numero del 1 al " + l.size(), 1, l.size());
 		Caracteristica c = Main.cargarCaracteristica();
@@ -87,8 +87,9 @@ public class Reportes {
 		LocalDateTime datetime = LocalDateTime.now();
 		try {
 			file = new FileWriter("casos de prueba/reportes/" + tipoReporte + " " + datetime.getYear() + "-"
-					+ datetime.getMonthValue() + "-" + datetime.getDayOfMonth() + " " + String.format("%01d",datetime.getHour()) + "-"
-					+ String.format("%01d",datetime.getMinute()) + "-" + String.format("%01d",datetime.getSecond()) + ".out");
+					+ datetime.getMonthValue() + "-" + datetime.getDayOfMonth() + " "
+					+ String.format("%01d", datetime.getHour()) + "-" + String.format("%01d", datetime.getMinute())
+					+ "-" + String.format("%01d", datetime.getSecond()) + ".out");
 			printerWriter = new PrintWriter(file);
 
 			// Imprime los datos y hace un salto de linea
