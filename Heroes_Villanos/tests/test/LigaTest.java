@@ -83,9 +83,6 @@ public class LigaTest {
 		Liga liga1 = new Liga("Villano","liga1");
 		Liga liga3 = new Liga("Villano","villano");
 		liga1.agregar(liga3);
-		
 		assertFalse(Liga.existeEnEstaLiga(liga1,u1));
-		
-		
 	}
 }
