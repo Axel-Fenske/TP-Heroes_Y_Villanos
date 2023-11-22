@@ -1,7 +1,6 @@
 package heroes_villanos;
 
 public class Unidad extends Competidor {
-	private boolean perteneceAUnaLiga = false;
 	private String nombreReal;
 	private double velocidad;
 	private double fuerza;
@@ -24,14 +23,6 @@ public class Unidad extends Competidor {
 		this.fuerza = fuerza;
 		this.resistencia = resistencia;
 		this.destreza = destreza;
-	}
-
-	public boolean isPerteneceAUnaLiga() {
-		return perteneceAUnaLiga;
-	}
-
-	public void setPerteneceAUnaLiga() {
-		this.perteneceAUnaLiga = true;
 	}
 
 	@Override
